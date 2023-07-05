@@ -1,9 +1,5 @@
 
 /* Color custom properties */
-body{
-/*  display: none;*/
-background-color: pink!important;
-}
 :root,
 .color-background-1 {
   --color-foreground: var(--color-base-text);
