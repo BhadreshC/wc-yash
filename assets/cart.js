@@ -230,6 +230,3 @@ if (!customElements.get("cart-note")) {
     }
   );
 }
-console.log("cart.js change");
-console.log("cart.js change by me");
-
