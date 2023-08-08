@@ -1,0 +1,84 @@
+{{ 'component-card.css' | asset_url | stylesheet_tag }}
+{{ 'component-price.css' | asset_url | stylesheet_tag }}
+{{ 'section-related-products.css' | asset_url | stylesheet_tag }}
+
+{% if section.settings.image_shape == 'blob' %}
+  {{ 'mask-blobs.css' | asset_url | stylesheet_tag }}
+{%- endif -%}
+
+{% assign product_id = '7251533529247' %}
+{% for item in cart.items %}
+  {% assign product_id = item.product_id %}
+{% endfor %}
+
+{%- liquid
+  assign recommend_products = true
+
+  if recommendations.products and recommendations.products_count > 0
+    assign related_collection = recommendations
+  endif
+
+  for tag in product.tags
+    if tag contains '_related'
+      assign include_collection_handle = tag | split: '_' | last
+      assign include_collection = collections[include_collection_handle]
+      if include_collection != empty and include_collection.products_count > 0
+        assign related_collection = include_collection
+        assign recommend_products = false
+        break
+      endif
+    endif
+  endfor
+
+  assign number_of_products = settings.related_count
+-%}
+
+<div
+  id="Recommendations-{{ section.id }}"
+  data-section-id="{{ section.id }}"
+  data-section-type="drawer-product-recommendations"
+  data-enable="{{ recommend_products }}"
+  data-product-id="{{ product_id }}"
+  data-url="{{ routes.product_recommendations_url }}?section_id={{ section.id }}&product_id={{ product_id }}&limit={{ number_of_products }}"
+  data-limit="{{ number_of_products }}">
+
+  <div
+    data-section-id="{{ product_id }}"
+    data-subsection
+    data-section-type="collection-template"
+    class="index-section index-section--sub-product">
+      <header class="section-header">
+        <div class="h3 cart__recommended-title">
+          {{ settings.product_recommendations_heading }}
+        </div>
+      </header>
+
+    {%- if recommend_products -%}
+      <div class="drawer-recommendations-placeholder">
+       
+        <div class="new-grid product-grid scrollable-grid visually-invisible" aria-hidden="true" data-view="medium">
+          {%- render 'card-product', product: product, no_actions: true -%}
+        </div>
+      </div>
+    {%- endif -%}
+    {%- if related_collection.products_count > 1 -%}
+      <div class="drawer-product-recommendations">
+        <div class="new-grid product-grid scrollable-grid" data-view="medium">
+          {%- for product in related_collection.products -%}
+            {%- render 'card-product', product: product -%}
+          {%- endfor -%}
+        </div>
+
+        {%- liquid
+          if settings.quick_shop_enable
+            for product in related_collection.products
+              render 'card-product', product: product
+            endfor
+          endif
+        -%}
+      </div>
+    {%- endif -%}
+  </div>
+</div>
+
+

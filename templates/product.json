@@ -3,27 +3,20 @@
     "main": {
       "type": "main-product",
       "blocks": {
-        "vendor": {
-          "type": "text",
-          "settings": {
-            "text": "{{ product.vendor }}",
-            "text_style": "uppercase"
-          }
-        },
         "title": {
           "type": "title",
           "settings": {
           }
         },
-        "caption": {
-          "type": "text",
+        "adaccb33-c01d-42e6-9e21-76f3e3aeb6a9": {
+          "type": "sku",
           "settings": {
-            "text": "{{ product.metafields.descriptors.subtitle.value }}",
-            "text_style": "subtitle"
+            "text_style": "body",
+            "inventory_threshold": 10
           }
         },
-        "price": {
-          "type": "price",
+        "description": {
+          "type": "description",
           "settings": {
           }
         },
@@ -31,6 +24,11 @@
           "type": "variant_picker",
           "settings": {
             "picker_type": "button"
+          }
+        },
+        "price": {
+          "type": "price",
+          "settings": {
           }
         },
         "quantity_selector": {
@@ -41,54 +39,26 @@
         "buy_buttons": {
           "type": "buy_buttons",
           "settings": {
-            "show_dynamic_checkout": true
+            "show_dynamic_checkout": true,
+            "show_gift_card_recipient": false
           }
         },
-        "description": {
-          "type": "description",
+        "90d2b3ee-f63d-45c5-baaf-549abe0c0878": {
+          "type": "icon-with-text",
           "settings": {
-          }
-        },
-        "collapsible-row-0": {
-          "type": "collapsible_tab",
-          "settings": {
-            "heading": "Materials",
-            "icon": "leather",
-            "content": "",
-            "page": ""
-          }
-        },
-        "collapsible-row-1": {
-          "type": "collapsible_tab",
-          "settings": {
-            "heading": "Shipping & Returns",
-            "icon": "truck",
-            "content": "",
-            "page": ""
-          }
-        },
-        "collapsible-row-2": {
-          "type": "collapsible_tab",
-          "settings": {
-            "heading": "Dimensions",
-            "icon": "ruler",
-            "content": "",
-            "page": ""
-          }
-        },
-        "collapsible-row-3": {
-          "type": "collapsible_tab",
-          "settings": {
-            "heading": "Care Instructions",
-            "icon": "heart",
-            "content": "",
-            "page": ""
-          }
-        },
-        "share": {
-          "type": "share",
-          "settings": {
-            "share_label": "Share"
+            "layout": "horizontal",
+            "icon_1": "clipboard",
+            "image_1": "shopify:\/\/shop_images\/button.png",
+            "heading_1": "<strong>Availability<\/strong> Ships in 6 days",
+            "icon_2": "none",
+            "image_2": "shopify:\/\/shop_images\/button_1.png",
+            "heading_2": "<strong>Shipping<\/strong> Free Standard Shipping",
+            "icon_3": "none",
+            "image_3": "shopify:\/\/shop_images\/button_2.png",
+            "heading_3": "<strong>In Demand<\/strong> 134 bought last month",
+            "icon_4": "truck",
+            "image_4": "shopify:\/\/shop_images\/button_3.png",
+            "heading_4": "<strong>Trusted<\/strong> Over 6,000+ Amazon Ratings"
           }
         },
         "opinew-stars-plugin-product": {
@@ -98,124 +68,270 @@
         }
       },
       "block_order": [
-        "vendor",
         "title",
         "opinew-stars-plugin-product",
-        "caption",
-        "price",
+        "adaccb33-c01d-42e6-9e21-76f3e3aeb6a9",
+        "description",
         "variant_picker",
+        "price",
         "quantity_selector",
         "buy_buttons",
-        "description",
-        "collapsible-row-0",
-        "collapsible-row-1",
-        "collapsible-row-2",
-        "collapsible-row-3",
-        "share"
+        "90d2b3ee-f63d-45c5-baaf-549abe0c0878"
       ],
       "settings": {
         "enable_sticky_info": true,
-        "gallery_layout": "stacked",
         "media_size": "large",
+        "constrain_to_viewport": true,
+        "media_fit": "contain",
+        "gallery_layout": "thumbnail",
+        "media_position": "left",
+        "image_zoom": "lightbox",
         "mobile_thumbnails": "hide",
         "hide_variants": true,
         "enable_video_looping": false,
         "padding_top": 36,
-        "padding_bottom": 12
+        "padding_bottom": 12,
+        "member_dis_tag": "<svg width=\"64\" height=\"64\" viewbox=\"0 0 64 64\" fill=\"none\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\">\n<path d=\"M22.5347 1.71336C22.6453 1.47269 22.8091 1.26029 23.0137 1.09221C23.2184 0.924126 23.4586 0.804762 23.7162 0.743133C23.9737 0.681504 24.2419 0.679223 24.5005 0.736461C24.7591 0.7937 25.0013 0.908961 25.2088 1.07354L31.8921 6.36266C32.1634 6.57789 32.4926 6.70762 32.8379 6.73539C33.1831 6.76317 33.5288 6.68772 33.8311 6.51864L41.2643 2.35019C41.495 2.22039 41.7522 2.14469 42.0165 2.12883C42.2808 2.11296 42.5452 2.15734 42.7898 2.25861C43.0343 2.35988 43.2527 2.51539 43.4284 2.71341C43.6041 2.91143 43.7326 3.14678 43.804 3.40169L46.0981 11.6128C46.1917 11.9463 46.3823 12.2444 46.6457 12.4693C46.9091 12.6942 47.2334 12.8358 47.5774 12.8761L56.0434 13.8753C56.3061 13.9061 56.5585 13.9962 56.7814 14.1387C57.0043 14.2813 57.1919 14.4726 57.3301 14.6982C57.4683 14.9238 57.5534 15.1778 57.5791 15.4412C57.6048 15.7045 57.5704 15.9702 57.4785 16.2183L54.5088 24.2094C54.3883 24.5342 54.3669 24.8874 54.4475 25.2243C54.5281 25.5613 54.7071 25.8666 54.9616 26.1016L61.2266 31.8832C61.4209 32.0628 61.5718 32.2841 61.6681 32.5306C61.7643 32.777 61.8034 33.0421 61.7823 33.3058C61.7612 33.5696 61.6805 33.8251 61.5462 34.0531C61.412 34.281 61.2278 34.4756 61.0074 34.622L53.9105 39.3449C53.6226 39.5369 53.3982 39.8099 53.2657 40.1295C53.1332 40.4492 53.0985 40.8009 53.1661 41.1402L54.8342 49.5011C54.8858 49.7608 54.8779 50.0288 54.8108 50.2849C54.7438 50.541 54.6194 50.7785 54.4471 50.9795C54.2749 51.1805 54.0592 51.3398 53.8164 51.4452C53.5736 51.5507 53.31 51.5996 53.0455 51.5883L44.5305 51.2357C44.1841 51.2209 43.8411 51.3094 43.5451 51.4901C43.2492 51.6708 43.0137 51.9354 42.8685 52.2503L39.3094 59.9931C39.1989 60.2338 39.0351 60.4462 38.8304 60.6143C38.6257 60.7824 38.3856 60.9017 38.128 60.9634C37.8704 61.025 37.6022 61.0273 37.3436 60.97C37.085 60.9128 36.8428 60.7975 36.6353 60.633L29.9521 55.3438C29.6807 55.1286 29.3515 54.9989 29.0063 54.9711C28.661 54.9433 28.3153 55.0188 28.013 55.1879L20.5798 59.3563C20.3491 59.4861 20.0919 59.5618 19.8276 59.5777C19.5634 59.5935 19.299 59.5492 19.0544 59.4479C18.8098 59.3466 18.5914 59.1911 18.4157 58.9931C18.24 58.7951 18.1116 58.5597 18.0401 58.3048L15.746 50.0937C15.6524 49.7602 15.4618 49.4621 15.1984 49.2372C14.9351 49.0123 14.6108 48.8707 14.2668 48.8304L5.80079 47.8312C5.53802 47.8004 5.28567 47.7103 5.06278 47.5678C4.83989 47.4252 4.65227 47.2339 4.51408 47.0083C4.37589 46.7827 4.29073 46.5287 4.26502 46.2653C4.23931 46.002 4.27373 45.7363 4.36567 45.4882L7.33531 37.4971C7.45589 37.1723 7.47723 36.8191 7.39661 36.4822C7.316 36.1452 7.13707 35.8399 6.88255 35.6049L0.617562 29.8233C0.423285 29.6437 0.272323 29.4224 0.17606 29.1759C0.0797971 28.9295 0.0407458 28.6644 0.0618516 28.4007C0.0829578 28.1369 0.16367 27.8814 0.297901 27.6534C0.432132 27.4255 0.616378 27.2309 0.836745 27.0845L7.93363 22.3616C8.2215 22.1696 8.44592 21.8966 8.57844 21.577C8.71097 21.2573 8.74563 20.9056 8.67805 20.5662L7.00998 12.2054C6.95831 11.9457 6.96629 11.6777 7.03333 11.4216C7.10038 11.1655 7.22473 10.928 7.397 10.727C7.56927 10.526 7.78495 10.3667 8.02777 10.2613C8.27059 10.1558 8.53419 10.1069 8.79868 10.1182L17.3136 10.4708C17.6597 10.4847 18.0021 10.3955 18.2974 10.2145C18.5927 10.0334 18.8275 9.76875 18.9721 9.454L22.5404 1.712L22.5347 1.71336Z\" fill=\"#FB991E\"><\/path>\n<\/svg>",
+        "member_dis_tagtext": "Save 10%",
+        "member_dis_textclr": "#ffffff"
       }
     },
-    "image-with-text": {
-      "type": "image-with-text",
+    "7f2b5a9d-519a-4dbd-b3b8-0bd623c493d9": {
+      "type": "Accordion",
       "blocks": {
-        "image-with-text-0": {
-          "type": "heading",
+        "f6148121-23f8-49c5-96cf-f5cca54c14e1": {
+          "type": "product",
           "settings": {
-            "heading": "Image with text",
-            "heading_size": "h1"
+            "accordion-title": "Description",
+            "description": "<p>Here is a great shirt to help honor our veterans this Veteran’s Day. The back of the shirt features a splendid design saluting U.S. veterans. The design shows off several airplanes in front of an American flag. Behind the American flag are various airplanes in a blueprint design.<\/p>\n\n<ul>\n  <li>Here is a great shirt to help honor our veterans this Veteran’s Day.<\/li>\n  <li>Here is a great shirt to help honor our veterans this Veteran’s Day.<\/li>\n  <li>Here is a great shirt to help honor our veterans this Veteran’s Day.<\/li>\n<\/ul>"
           }
         },
-        "image-with-text-1": {
-          "type": "text",
+        "a9e5305e-c39d-4486-9fb2-33ed6fb37a67": {
+          "type": "product",
           "settings": {
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
-            "text_style": "body"
+            "accordion-title": "Shipping information",
+            "description": "Here is a great shirt to help honor our veterans this Veteran’s Day. The back of the shirt features a splendid design saluting U.S. veterans. The design shows off several airplanes in front of an American flag. Behind the American flag are various airplanes in a blueprint design."
+          }
+        },
+        "09deda53-6655-4253-b0e5-e17cdad29ce6": {
+          "type": "product",
+          "settings": {
+            "accordion-title": "Ask a question",
+            "description": "Here is a great shirt to help honor our veterans this Veteran’s Day. The back of the shirt features a splendid design saluting U.S. veterans. The design shows off several airplanes in front of an American flag. Behind the American flag are various airplanes in a blueprint design."
           }
         }
       },
       "block_order": [
-        "image-with-text-0",
-        "image-with-text-1"
+        "f6148121-23f8-49c5-96cf-f5cca54c14e1",
+        "a9e5305e-c39d-4486-9fb2-33ed6fb37a67",
+        "09deda53-6655-4253-b0e5-e17cdad29ce6"
       ],
       "settings": {
-        "height": "small",
-        "desktop_image_width": "medium",
-        "layout": "text_first",
-        "desktop_content_position": "top",
-        "desktop_content_alignment": "left",
-        "content_layout": "no-overlap",
-        "color_scheme": "background-2",
-        "mobile_content_alignment": "left",
-        "padding_top": 36,
-        "padding_bottom": 36
+        "heading": "",
+        "padding_top": 40,
+        "padding_bottom": 40
       }
     },
-    "multicolumn": {
-      "type": "multicolumn",
-      "blocks": {
-        "column-0": {
-          "type": "column",
-          "settings": {
-            "title": "Free Shipping",
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
-            "link_label": "",
-            "link": ""
-          }
-        },
-        "column-1": {
-          "type": "column",
-          "settings": {
-            "title": "Hassle-Free Exchanges",
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
-            "link_label": "",
-            "link": ""
-          }
-        }
-      },
-      "block_order": [
-        "column-0",
-        "column-1"
-      ],
+    "related-products": {
+      "type": "related-products",
+      "disabled": true,
       "settings": {
-        "title": "",
-        "heading_size": "h1",
-        "image_width": "full",
-        "image_ratio": "adapt",
-        "columns_desktop": 2,
-        "column_alignment": "left",
-        "background_style": "none",
-        "button_label": "",
-        "button_link": "",
-        "color_scheme": "background-1",
-        "columns_mobile": "1",
-        "swipe_on_mobile": false,
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
-    },
-    "product-recommendations": {
-      "type": "product-recommendations",
-      "settings": {
-        "heading": "You may also like",
+        "heading": "More from EAA",
         "heading_size": "h2",
-        "columns_desktop": 4,
+        "products_to_show": 5,
+        "columns_desktop": 5,
         "color_scheme": "background-1",
         "image_ratio": "square",
+        "image_shape": "default",
         "show_secondary_image": true,
         "show_vendor": false,
         "show_rating": false,
         "columns_mobile": "2",
         "padding_top": 36,
         "padding_bottom": 28
+      }
+    },
+    "4bb22729-fbbc-44bb-9f59-28784680c9a6": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "More from EAA",
+        "heading_size": "h1",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
+        "collection": "shop-dresses",
+        "products_to_show": 10,
+        "columns_desktop": 5,
+        "full_width": false,
+        "show_view_all": false,
+        "view_all_style": "solid",
+        "enable_desktop_slider": true,
+        "color_scheme": "",
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_rating": false,
+        "enable_quick_add": true,
+        "columns_mobile": "2",
+        "swipe_on_mobile": true,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "6f5e159a-635f-4d30-8d41-79c8b5ca4863": {
+      "type": "slideshow",
+      "blocks": {
+        "template--16147871105183__6f5e159a-635f-4d30-8d41-79c8b5ca4863-slide-1": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Image_2_fda236a6-6e96-4ae9-a0ba-670255775983.png",
+            "heading": "Shop EAA Merchandise",
+            "banner_desc": "make DECEMBER special",
+            "heading_size": "h1",
+            "subheading": "From how-to books and DVDs to co-branded Flight Outfitters, and everything in between.",
+            "button_label": "SUBSCRIBE TODAY",
+            "link": "",
+            "button_label1": "SHOP MERCHANDISE",
+            "link1": "",
+            "button_style_secondary": false,
+            "box_align": "middle-center",
+            "show_text_box": true,
+            "text_alignment": "left",
+            "image_overlay_opacity": 0,
+            "color_scheme": "",
+            "text_alignment_mobile": "center"
+          }
+        }
+      },
+      "block_order": [
+        "template--16147871105183__6f5e159a-635f-4d30-8d41-79c8b5ca4863-slide-1"
+      ],
+      "settings": {
+        "layout": "full_bleed",
+        "slide_height": "medium",
+        "slider_visual": "counter",
+        "auto_rotate": false,
+        "change_slides_speed": 5,
+        "image_behavior": "none",
+        "show_text_below": true,
+        "accessibility_info": "Slideshow about our brand"
+      }
+    },
+    "15c6f389-8095-4f25-8867-8fac6e98b192": {
+      "type": "rich-text",
+      "blocks": {
+        "template--16147871105183__15c6f389-8095-4f25-8867-8fac6e98b192-heading-1": {
+          "type": "heading",
+          "settings": {
+            "heading": "Save 10% on your first purchase",
+            "heading_size": "h1"
+          }
+        },
+        "template--16147871105183__15c6f389-8095-4f25-8867-8fac6e98b192-text-1": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Sign up today and we'll send you a 10% discount code towards your first purchase.<\/p>"
+          }
+        },
+        "template--16147871105183__15c6f389-8095-4f25-8867-8fac6e98b192-button-1": {
+          "type": "button",
+          "disabled": true,
+          "settings": {
+            "button_label": "Button label",
+            "button_link": "",
+            "button_style_secondary": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "template--16147871105183__15c6f389-8095-4f25-8867-8fac6e98b192-heading-1",
+        "template--16147871105183__15c6f389-8095-4f25-8867-8fac6e98b192-text-1",
+        "template--16147871105183__15c6f389-8095-4f25-8867-8fac6e98b192-button-1"
+      ],
+      "settings": {
+        "bg_img": "shopify:\/\/shop_images\/Image_1.png",
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
+    "b38207d2-3200-426e-a430-2cdae6c17c1f": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "You may also like",
+        "heading_size": "h1",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
+        "collection": "baby-boy",
+        "products_to_show": 6,
+        "columns_desktop": 5,
+        "full_width": false,
+        "show_view_all": false,
+        "view_all_style": "solid",
+        "enable_desktop_slider": true,
+        "color_scheme": "",
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_rating": false,
+        "enable_quick_add": true,
+        "columns_mobile": "2",
+        "swipe_on_mobile": true,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "c67af263-8cc4-47d6-af3a-9b9fdf0c6844": {
+      "type": "image-with-content-2",
+      "blocks": {
+        "de6ef076-8cef-4b7e-89e1-14224b25d2f4": {
+          "type": "image_content",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/IMAGE_8.png",
+            "title": "How-To Books& DVDs",
+            "discription": "Let us help you with your homebuilt aircraft.",
+            "btn_text": "LEARN MORE",
+            "link": ""
+          }
+        },
+        "a42c122a-4c9f-4cad-af14-5f34f8238f3b": {
+          "type": "image_content",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/IMAGE_9.png",
+            "title": "Check ourFeatured Products",
+            "discription": "Enjoy drinking your favorite beverage from our stainless steel thermal water bottles.",
+            "btn_text": "SHOP NOW",
+            "link": ""
+          }
+        },
+        "cc3b1b03-541a-494a-b304-dc24c4df1a57": {
+          "type": "image_content",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/IMAGE_10.png",
+            "title": "Shop EAAon Amazon",
+            "discription": "Amazon prime members receive two-day free shipping.",
+            "btn_text": "SHOP NOW",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "de6ef076-8cef-4b7e-89e1-14224b25d2f4",
+        "a42c122a-4c9f-4cad-af14-5f34f8238f3b",
+        "cc3b1b03-541a-494a-b304-dc24c4df1a57"
+      ],
+      "settings": {
+        "padding_top": 36,
+        "padding_bottom": 36
       }
     },
     "opinew-reviews-product-page-code": {
@@ -237,9 +353,13 @@
   },
   "order": [
     "main",
-    "image-with-text",
-    "multicolumn",
-    "product-recommendations",
+    "7f2b5a9d-519a-4dbd-b3b8-0bd623c493d9",
+    "related-products",
+    "4bb22729-fbbc-44bb-9f59-28784680c9a6",
+    "6f5e159a-635f-4d30-8d41-79c8b5ca4863",
+    "15c6f389-8095-4f25-8867-8fac6e98b192",
+    "b38207d2-3200-426e-a430-2cdae6c17c1f",
+    "c67af263-8cc4-47d6-af3a-9b9fdf0c6844",
     "opinew-reviews-product-page-code"
   ]
 }

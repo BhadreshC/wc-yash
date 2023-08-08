@@ -1,14 +1,14 @@
 {% comment %}
-    Renders a list of product's price (regular, sale)
+  Renders a list of product's price (regular, sale)
 
-    Accepts:
-    - product: {Object} Product Liquid object (optional)
-    - use_variant: {Boolean} Renders selected or first variant price instead of overall product pricing (optional)
-    - show_badges: {Boolean} Renders 'Sale' and 'Sold Out' tags if the product matches the condition (optional)
-    - price_class: {String} Adds a price class to the price element (optional)
+  Accepts:
+  - product: {Object} Product Liquid object (optional)
+  - use_variant: {Boolean} Renders selected or first variant price instead of overall product pricing (optional)
+  - show_badges: {Boolean} Renders 'Sale' and 'Sold Out' tags if the product matches the condition (optional)
+  - price_class: {String} Adds a price class to the price element (optional)
 
-    Usage:
-    {% render 'price', product: product %}
+  Usage:
+  {% render 'price', product: product %}
 {% endcomment %}
 {%- liquid
   if use_variant
@@ -30,12 +30,16 @@
   endif
 -%}
 
-<div class="price
-  {%- if price_class %} {{ price_class }}{% endif -%}
-  {%- if available == false %} price--sold-out {% endif -%}
-  {%- if compare_at_price > price %} price--on-sale {% endif -%}
-  {%- if product.price_varies == false and product.compare_at_price_varies %} price--no-compare{% endif -%}
-  {%- if show_badges %} price--show-badge{% endif -%}">
+<div
+  class="
+    price
+    {%- if price_class %} {{ price_class }}{% endif -%}
+    {%- if available == false %} price--sold-out {% endif -%}
+    {%- if compare_at_price > price %} price--on-sale {% endif -%}
+    {%- if product.price_varies == false and product.compare_at_price_varies %} price--no-compare{% endif -%}
+    {%- if show_badges %} price--show-badge{% endif -%}
+  "
+>
   <div class="price__container">
     {%- comment -%}
       Explanation of description list:
@@ -66,6 +70,13 @@
         {{ money_price }}
       </span>
     </div>
+
+      {% assign current_variant = product.selected_or_first_available_variant %}
+      {% assign mshipPrice = current_variant.price | times: 10 | divided_by: 100 %}
+      {% assign percentagePrice = current_variant.price | times: 0.9 %}
+      {% assign finalPrice = current_variant.price | minus: mshipPrice %}
+      <div data-membership-price class="product-block membership-price" data-mshipPrice="{{ current_variant.price }}--{{ mshipPrice }}--{{ percentagePrice }}">{{ finalPrice | money }} For Members</div>
+    
     <small class="unit-price caption{% if product.selected_or_first_available_variant.unit_price_measurement == nil %} hidden{% endif %}">
       <span class="visually-hidden">{{ 'products.product.price.unit_price' | t }}</span>
       <span class="price-item price-item--last">
@@ -81,6 +92,7 @@
       </span>
     </small>
   </div>
+  {% comment %}
   {%- if show_badges -%}
     <span class="badge price__badge-sale color-{{ settings.sale_badge_color_scheme }}">
       {{ 'products.product.on_sale' | t }}
@@ -90,4 +102,5 @@
       {{ 'products.product.sold_out' | t }}
     </span>
   {%- endif -%}
+  {% endcomment %}
 </div>

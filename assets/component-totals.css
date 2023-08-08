@@ -1,9 +1,12 @@
 .totals {
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid #E1E1E1;
+    padding: 0 0 20px 0;
+    margin: 0 0 20px 0;
 }
-
 .totals > * {
   font-size: 1.6rem;
   margin: 0;
@@ -18,7 +21,7 @@
 }
 
 .totals > * + * {
-  margin-left: 2rem;
+  margin-left: 0rem;
 }
 
 .totals__subtotal-value {
@@ -28,9 +31,19 @@
 .cart__ctas + .totals {
   margin-top: 2rem;
 }
+.totals__subtotal {
+    margin-bottom: 12px;
+    font-size: 14px;
+    font-weight: 400;
+}
+.totals__subtotal-value {
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 44px;
+}
 
 @media all and (min-width: 750px) {
   .totals {
-    justify-content: flex-end;
+    justify-content: center;
   }
 }

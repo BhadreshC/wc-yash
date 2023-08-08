@@ -107,7 +107,7 @@
 
 .product-option {
   font-size: 1.4rem;
-  word-break: break-all;
+  word-break: break-word;
   line-height: calc(1 + 0.5 / var(--font-body-scale));
 }
 
@@ -131,7 +131,7 @@ cart-remove-button .button {
 }
 
 cart-remove-button .button:before,
-cart-remove-button .button:after  {
+cart-remove-button .button:after {
   content: none;
 }
 
@@ -204,6 +204,14 @@ cart-remove-button .icon-remove {
 .cart-items thead th {
   text-transform: uppercase;
 }
+.cart-item__totals {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+}
+.cart-item {
+    border-bottom: 1px solid #e5e5e5;
+}
 
 @media screen and (max-width: 749px) {
   .cart-items,
@@ -224,7 +232,8 @@ cart-remove-button .icon-remove {
     display: grid;
     grid-template: repeat(2, auto) / repeat(4, 1fr);
     gap: 1.5rem;
-    margin-bottom: 3.5rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.5rem;
   }
 
   .cart-item:last-child {
@@ -241,17 +250,15 @@ cart-remove-button .icon-remove {
 
   .cart-item__quantity {
     grid-column: 2 / 5;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
   }
 
   .cart-item__quantity-wrapper {
     flex-wrap: wrap;
   }
 
-  .cart-item__totals {
-    display: flex;
-    align-items: flex-start;
-    justify-content: flex-end;
-  }
 }
 
 .cart-item__error-text + svg {
@@ -261,7 +268,7 @@ cart-remove-button .icon-remove {
 @media screen and (min-width: 750px) {
   .cart-items {
     border-spacing: 0;
-    border-collapse: separate;
+    border-collapse: collapse;
     box-shadow: none;
     width: 100%;
     display: table;
@@ -281,7 +288,10 @@ cart-remove-button .icon-remove {
 
   .cart-items td {
     vertical-align: top;
-    padding-top: 4rem;
+    padding-top: 14px;
+  }
+  .page_cart .gradient {
+    clear: both;
   }
 
   .cart-item {
@@ -289,15 +299,19 @@ cart-remove-button .icon-remove {
   }
 
   .cart-item > td + td {
-    padding-left: 4rem;
+    padding-left: 2rem;
   }
 
   .cart-item__details {
     width: 35rem;
   }
 
+  .page_cart .cart-item__media {
+    width: 14rem;
+  }
+  
   .cart-item__media {
-    width: 10rem;
+    width: 7rem;
   }
 
   .cart-item cart-remove-button {
@@ -321,5 +335,10 @@ cart-remove-button .icon-remove {
 
   .cart-items thead th:first-child {
     width: 60%;
+  }
+}
+@media screen and (max-width:767px){
+  .cart-item__totals {
+    display: none !important;
   }
 }
