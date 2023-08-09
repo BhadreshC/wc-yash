@@ -1,0 +1,57 @@
+
+{% assign discount_val = settings.cart_member_discount | plus: 0 %}
+{% assign orignalTotal = cart.total_price %}          
+    {% assign cart_total = cart.total_price %}
+    {% assign discountPlus = 100 | minus: discount_val %}
+    {% assign orignalTotal = cart_total | times: 100 | divided_by:discountPlus %}        
+
+{% if customer %}
+    <div class="membership_cls log_in {% if cart.item_count == 0 %}hide{% endif %}">
+      <div
+        class="membership_bgimg"
+        {% if settings.member_bg_image != blank %}
+          style="background-image:url({{ settings.member_bg_image | img_url:'master' }})"
+        {% endif %}
+      >
+        <div class="membership_inner">
+          {% assign cart_total = orignalTotal %}          
+          {% assign discount_amtt = cart_total | times: discount_val | divided_by:100 %}
+          {% assign finalAmtt = discount_amtt | money %}
+          {% if settings.cart_member_title != blank %}
+            {% assign member_title = settings.cart_member_title | replace: '[[amount]]', finalAmtt %}
+            <div class="mesp_title member">{{ member_title }}</div>
+          {% endif %}
+          {% if settings.cart_member_desc != blank %}
+            <p class="mesp_cnt">{{ settings.cart_member_desc }}</p>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+
+    
+{% else %}
+
+  <div class="membership_cls show-membership_product log_out {% if cart.item_count == 0 %}hide{% endif %}">    
+    <div
+      class="membership_bgimg"
+      {% if settings.member_bg_image != blank %}
+        style="background-image:url({{ settings.member_bg_image | img_url:'master' }})"
+      {% endif %}
+    >
+      <div class="membership_inner">
+        {% assign cart_subtotal = cart.total_price %}
+        {% assign discount_amtt = cart_subtotal | times: discount_val | divided_by:100 %}
+        {% assign finalAmtt = discount_amtt | money %}
+        {% if settings.not_customer_title != blank %}
+          {% assign member_title = settings.not_customer_title | replace: '[[amount]]', finalAmtt %}
+          <div data-saved="{{ discount_val }}" class="mesp_title Non-member">{{ member_title }}</div>
+        {% endif %}
+        {% if settings.cart_member_desc != blank %}
+          <p class="mesp_cnt">{{ settings.cart_member_desc }}</p>
+        {% endif %}
+    
+      </div>
+    </div>
+  </div>
+
+{% endif %}

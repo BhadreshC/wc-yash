@@ -11,7 +11,7 @@
 .pagination__list {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: left;
 }
 
 .pagination__list > li {

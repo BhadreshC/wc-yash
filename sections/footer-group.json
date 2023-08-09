@@ -1,0 +1,71 @@
+{
+  "name": "t:sections.footer.name",
+  "type": "footer",
+  "sections": {
+    "footer": {
+      "type": "footer",
+      "blocks": {
+        "de3f516d-4fbe-4ac7-bbee-bd8ea518e550": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/EAA2015__NoTag_1cLogoBlue_cmyk.png",
+            "image_width": 125,
+            "alignment": "center"
+          }
+        },
+        "ebb9cecf-7edc-4b17-b56e-587c418389ed": {
+          "type": "link_list",
+          "settings": {
+            "heading": "AirVenture Dates",
+            "menu": "airventure-dates"
+          }
+        },
+        "353d9366-98ec-4872-8a1a-6ca79ae5b915": {
+          "type": "link_list",
+          "settings": {
+            "heading": "Company",
+            "menu": "mega-menu"
+          }
+        },
+        "4635a207-705f-4030-a546-0d3a3b3ce59c": {
+          "type": "link_list",
+          "settings": {
+            "heading": "Support",
+            "menu": "support"
+          }
+        },
+        "d6a5f29e-5ebe-4239-b69f-40f2213b0d41": {
+          "type": "link_list",
+          "settings": {
+            "heading": "Shop",
+            "menu": "shop-1"
+          }
+        }
+      },
+      "block_order": [
+        "de3f516d-4fbe-4ac7-bbee-bd8ea518e550",
+        "ebb9cecf-7edc-4b17-b56e-587c418389ed",
+        "353d9366-98ec-4872-8a1a-6ca79ae5b915",
+        "4635a207-705f-4030-a546-0d3a3b3ce59c",
+        "d6a5f29e-5ebe-4239-b69f-40f2213b0d41"
+      ],
+      "settings": {
+        "color_scheme": "background-2",
+        "newsletter_enable": false,
+        "newsletter_heading": "Subscribe to our emails",
+        "enable_follow_on_shop": true,
+        "show_social": true,
+        "enable_country_selector": false,
+        "enable_language_selector": true,
+        "payment_enable": false,
+        "show_policy": false,
+        "margin_top": 36,
+        "padding_top": 36,
+        "padding_bottom": 0
+      }
+    }
+  },
+  "order": [
+    "footer"
+  ]
+}
