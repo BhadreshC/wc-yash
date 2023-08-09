@@ -55,6 +55,9 @@
     <div class="price__sale">
       {%- unless product.price_varies == false and product.compare_at_price_varies %}
         <span class="visually-hidden visually-hidden--inline">{{ 'products.product.price.regular_price' | t }}</span>
+        <span class="price-item price-item--sale price-item--last">
+          {{ money_price }}
+        </span>
         <span>
           <s class="price-item price-item--regular">
             {% if settings.currency_code_enabled %}
@@ -66,17 +69,7 @@
         </span>
       {%- endunless -%}
       <span class="visually-hidden visually-hidden--inline">{{ 'products.product.price.sale_price' | t }}</span>
-      <span class="price-item price-item--sale price-item--last">
-        {{ money_price }}
-      </span>
     </div>
-
-      {% assign current_variant = product.selected_or_first_available_variant %}
-      {% assign mshipPrice = current_variant.price | times: 10 | divided_by: 100 %}
-      {% assign percentagePrice = current_variant.price | times: 0.9 %}
-      {% assign finalPrice = current_variant.price | minus: mshipPrice %}
-      <div data-membership-price class="product-block membership-price" data-mshipPrice="{{ current_variant.price }}--{{ mshipPrice }}--{{ percentagePrice }}">{{ finalPrice | money }} For Members</div>
-    
     <small class="unit-price caption{% if product.selected_or_first_available_variant.unit_price_measurement == nil %} hidden{% endif %}">
       <span class="visually-hidden">{{ 'products.product.price.unit_price' | t }}</span>
       <span class="price-item price-item--last">
@@ -93,14 +86,20 @@
     </small>
   </div>
   {% comment %}
-  {%- if show_badges -%}
-    <span class="badge price__badge-sale color-{{ settings.sale_badge_color_scheme }}">
-      {{ 'products.product.on_sale' | t }}
-    </span>
+    {%- if show_badges -%}
+      <span class="badge price__badge-sale color-{{ settings.sale_badge_color_scheme }}">
+        {{ 'products.product.on_sale' | t }}
+      </span>
 
-    <span class="badge price__badge-sold-out color-{{ settings.sold_out_badge_color_scheme }}">
-      {{ 'products.product.sold_out' | t }}
-    </span>
-  {%- endif -%}
+      <span class="badge price__badge-sold-out color-{{ settings.sold_out_badge_color_scheme }}">
+        {{ 'products.product.sold_out' | t }}
+      </span>
+    {%- endif -%}
   {% endcomment %}
 </div>
+
+<script>
+  $(function() {
+      $(' .price__container').matchHeight({ byRow: 0 });
+  });
+</script>

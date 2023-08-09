@@ -1,0 +1,61 @@
+<div class="product-review">
+  <div
+    id="wc_review_section"
+    class="wc_review_main_content"
+    data-url="{{ shop.url }}"
+    data-handle="{{ product.handle }}"
+    data-product_id="{{ product.id }}"
+    data-limit="0"
+  ></div>
+</div>
+
+<style>
+    .product-review {
+      max-width: 1356px;
+      margin: 0 auto;
+      padding: 0 20px;
+  }
+     .wc_review_top_title h2 {
+      font-weight: 500;
+      font-size: 40px;
+      line-height: 160%;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      font-family: 'Oswald', sans-serif !important;
+  }
+    #wc_review_section .wc_review_top_title h2 {
+      float: none;
+    }
+    .wc_review_top_title {
+      text-align: center;
+    }
+    .wc_grid_social_sharing .wc_review_like ul li a {
+      margin: 0;
+    }
+  @media screen and (max-width: 749px){
+    .wc_review_top_title h2 {
+      font-size: 28px;
+      line-height: 110%;
+  }
+}
+</style>
+
+{% schema %}
+{
+  "name": "product review",
+  "settings": [
+
+  ],
+  "presets": [
+    {
+      "name": "product review"
+    }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

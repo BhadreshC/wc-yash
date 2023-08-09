@@ -1,12 +1,18 @@
-{{ 'component-slider.css' | asset_url | stylesheet_tag }}
-{{ 'component-card.css' | asset_url | stylesheet_tag }}
-{{ 'component-article-card.css' | asset_url | stylesheet_tag }}
+<link rel="stylesheet" href="{{ 'component-slider.css' | asset_url }}" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="{{ 'component-card.css' | asset_url }}" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="{{ 'component-article-card.css' | asset_url }}" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="{{ 'section-featured-blog.css' | asset_url }}" media="print" onload="this.media='all'">
+
+<noscript>{{ 'component-slider.css' | asset_url | stylesheet_tag }}</noscript>
+<noscript>{{ 'component-card.css' | asset_url | stylesheet_tag }}</noscript>
+<noscript>{{ 'component-article-card.css' | asset_url | stylesheet_tag }}</noscript>
+
 {{ 'section-featured-blog.css' | asset_url | stylesheet_tag }}
 
 {%- style -%}
   .section-{{ section.id }}-padding {
-    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
-    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+    padding-top: {{ section.settings.padding_top | times: 0.5 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.5 | round: 0 }}px;
   }
 
   @media screen and (min-width: 750px) {
@@ -25,26 +31,20 @@
   endif
 -%}
 <div class="blog color-{{ section.settings.color_scheme }} gradient{% if section.settings.heading == blank %} no-heading{% endif %}">
-  <div class="page-width-desktop isolate{% if posts_displayed < 3 %} page-width-tablet{% endif %} section-{{ section.id }}-padding">
+  <div class="isolate{% if posts_displayed < 3 %} page-width-tablet{% endif %} section-{{ section.id }}-padding">
     {%- unless section.settings.heading == blank -%}
       <div class="title-wrapper-with-link{% if posts_displayed > 2 %} title-wrapper--self-padded-tablet-down{% else %} title-wrapper--self-padded-mobile{% endif %} title-wrapper--no-top-margin">
-        <h2
-          id="SectionHeading-{{ section.id }}"
-          class="blog__title inline-richtext {{ section.settings.heading_size }}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
-          {% if settings.animations_reveal_on_scroll %}
-            data-cascade
-          {% endif %}
-        >
-          {{ section.settings.heading }}
+        <h2 id="SectionHeading-{{ section.id }}" class="blog__title {{ section.settings.heading_size }}">
+          {{ section.settings.heading | escape }}
         </h2>
-
+        <h2 class="bg_title">{{ section.settings.bg_title }}</h2>
         {%- if section.settings.blog != blank
           and section.settings.show_view_all
           and section.settings.post_limit < section.settings.blog.articles_count
         -%}
           <a
             href="{{ section.settings.blog.url }}"
-            class="link underlined-link large-up-hide{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+            class="link underlined-link large-up-hide"
           >
             {{ 'sections.featured_blog.view_all' | t }}
           </a>
@@ -52,21 +52,16 @@
       </div>
     {%- endunless -%}
     {%- if section.settings.blog != blank and section.settings.blog.articles_count > 0 -%}
-     
-      <slider-component class="slider-mobile-gutter{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+      <slider-component class="slider-mobile-gutter">
         <ul
           id="Slider-{{ section.id }}"
-          class="blog__posts articles-wrapper contains-card contains-card--article{% if settings.card_style == 'standard' %} contains-card--standard{% endif %} grid grid--peek grid--2-col-tablet grid--{{ section.settings.columns_desktop }}-col-desktop slider {% if posts_displayed > 2 %}slider--tablet{% else %}slider--mobile{% endif %}"
+          class="blog__posts articles-wrapper contains-card contains-card--article{% if settings.card_style == 'standard' %} contains-card--standard{% endif %}  grid--2-col-tablet grid--{{ section.settings.columns_desktop }}-col-desktop slider {% if posts_displayed > 2 %}slider--tablet{% else %}slider--mobile{% endif %}"
           role="list"
         >
           {%- for article in section.settings.blog.articles limit: section.settings.post_limit -%}
             <li
               id="Slide-{{ section.id }}-{{ forloop.index }}"
-              class="blog__post grid__item article slider__slide slider__slide--full-width{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
-              {% if settings.animations_reveal_on_scroll %}
-                data-cascade
-                style="--animation-order: {{ forloop.index }};"
-              {% endif %}
+              class="blog__post grid__item article slider__slide slider__slide--full-width"
             >
               {% render 'article-card',
                 blog: section.settings.blog,
@@ -109,12 +104,7 @@
       </slider-component>
 
       {%- if section.settings.show_view_all and section.settings.post_limit < section.settings.blog.articles_count -%}
-        <div
-          class="blog__view-all center small-hide medium-hide{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
-          {% if settings.animations_reveal_on_scroll %}
-            data-cascade
-          {% endif %}
-        >
+        <div class="blog__view-all center small-hide medium-hide">
           <a
             href="{{ section.settings.blog.url }}"
             id="ViewAll-{{ section.id }}"
@@ -126,14 +116,9 @@
         </div>
       {%- endif -%}
     {%- else -%}
-      <div
-        class="blog-placeholder{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
-        {% if settings.animations_reveal_on_scroll %}
-          data-cascade
-        {% endif %}
-      >
+      <div class="blog-placeholder">
         <div class="placeholder media media--landscape">
-          {{ 'blog-apparel-1' | placeholder_svg_tag: 'placeholder-svg' }}
+          {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
         </div>
         <div class="blog-placeholder__content">
           <h2>
@@ -148,19 +133,142 @@
   </div>
 </div>
 
+<script>
+      $('.blog__posts').slick({
+      dots: false,
+      arrows: true,
+      infinite: true,
+      slidesToShow: 3,
+      slidesToScroll: 1,
+      prevArrow:"<button type='button' class='slick-prev pull-left'><svg width='16' height='24' viewBox='0 0 16 24' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M13.7761 0.283424C14.1225 0.275806 14.4626 0.376205 14.7492 0.570817C15.0358 0.76543 15.2546 1.04464 15.3753 1.36937C15.4959 1.6941 15.5124 2.04831 15.4224 2.38284C15.3324 2.71737 15.1404 3.01542 14.8732 3.23579L4.67457 11.9728L14.8732 20.7066C15.0581 20.8425 15.2129 21.0151 15.328 21.2136C15.4431 21.4121 15.516 21.6323 15.5421 21.8603C15.5681 22.0882 15.5469 22.3191 15.4796 22.5385C15.4123 22.7578 15.3004 22.961 15.151 23.1352C15.0016 23.3093 14.8178 23.4506 14.6112 23.5504C14.4046 23.6502 14.1796 23.7063 13.9503 23.7152C13.721 23.724 13.4923 23.6855 13.2787 23.6019C13.065 23.5183 12.8708 23.3915 12.7084 23.2294L1.03199 13.239C0.848626 13.0825 0.701384 12.8883 0.600419 12.6694C0.499454 12.4505 0.44717 12.2123 0.44717 11.9712C0.44717 11.7302 0.499454 11.4919 0.600419 11.273C0.701384 11.0541 0.848626 10.8597 1.03199 10.7032L12.7084 0.703269C13.0034 0.441273 13.3817 0.292321 13.7761 0.283039L13.7761 0.283424Z' fill='#000'/></svg></button>",
+      nextArrow:"<button type='button' class='slick-next pull-right'><svg width='16' height='24' viewBox='0 0 16 24' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M2.22397 23.7166C1.87763 23.7242 1.53753 23.6238 1.25093 23.4292C0.96434 23.2346 0.745503 22.9554 0.624848 22.6306C0.504193 22.3059 0.487715 21.9517 0.577704 21.6172C0.667692 21.2826 0.859676 20.9846 1.12697 20.7642L11.3255 12.0272L1.12697 3.29335C0.942068 3.15746 0.787221 2.98493 0.672122 2.78642C0.557023 2.58791 0.484151 2.36772 0.458068 2.13974C0.431986 1.91176 0.453256 1.6809 0.520547 1.46153C0.587837 1.24215 0.699698 1.03897 0.849124 0.864825C0.998551 0.690683 1.18232 0.549424 1.38893 0.449594C1.59555 0.349764 1.82054 0.293694 2.04984 0.284847C2.27913 0.276 2.50778 0.314461 2.72147 0.398075C2.93516 0.481688 3.12928 0.608518 3.29168 0.770629L14.9681 10.761C15.1515 10.9175 15.2987 11.1117 15.3997 11.3306C15.5007 11.5495 15.553 11.7877 15.553 12.0288C15.553 12.2698 15.5007 12.5081 15.3997 12.727C15.2987 12.9459 15.1515 13.1403 14.9681 13.2968L3.29168 23.2967C2.99672 23.5587 2.61838 23.7077 2.22397 23.717V23.7166Z' fill='#000'/></svg></button>",
+      responsive: [
+        {
+           breakpoint: 1440,
+            settings: {
+            slidesToShow: 2,
+            slidesToScroll: 1,
+            infinite: true,
+            dots: false
+         }
+        },
+        {
+           breakpoint: 768,
+            settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            infinite: true,
+            dots: false
+         }
+        }
+      ]
+  });
+</script>
+
+<style>
+  .blog__post .card__information {
+    padding: 20px 20px 13px 20px;
+  }
+  .blog__post .full-unstyled-link {
+    font-family: 'Rubik' !important;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 130%;
+    letter-spacing: 0.02em;
+  }
+  .blog__post .article-card__excerpt {
+    font-family: 'Rubik' !important;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 23px;
+    letter-spacing: 0.01em;
+    margin: 10px 0 24px 0;
+  }
+  .article-card__info {
+    padding-top: 0;
+    text-align: end;
+  }
+  .article-card__info time {
+    font-family: 'Rubik' !important;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 15px;
+    letter-spacing: 0.03em;
+  }
+  .blog__title {
+    font-weight: 700;
+    font-size: 44px;
+    line-height: 140%;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+  .blog__posts .slick-prev {
+    font-size: 0;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border: none;
+    background-color: transparent;
+    position: absolute;
+    left: -55px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1;
+  }
+  .blog__posts .slick-next {
+    font-size: 0;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border: none;
+    background-color: transparent;
+    position: absolute;
+    right: -55px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1;
+  }
+    .blog__posts .blog__post {
+    border: 1px solid #A6A6A6;
+    border-radius: 0px 0px 6px 6px;
+    margin: 0 20px;
+  }
+  .blog .bg_title {
+    top: 45px;
+  }
+  @media screen and (max-width:1440px){
+    .blog__posts .slick-prev {
+      left: 0px;
+    }
+    .blog__posts .slick-next {
+      right: 0px;
+    }
+  }
+  @media screen and (max-width:768px){
+    .blog__title {
+    font-size: 28px;
+    }
+
+  }
+</style>
+
 {% schema %}
 {
   "name": "t:sections.featured-blog.name",
   "tag": "section",
-  "disabled_on": {
-    "groups": ["header", "footer"]
-  },
+  "class": "section",
   "settings": [
     {
-      "type": "inline_richtext",
+      "type": "text",
       "id": "heading",
       "default": "Blog posts",
       "label": "t:sections.featured-blog.settings.heading.label"
+    },
+    {
+      "type": "text",
+      "id": "bg_title",
+      "label": "background title"
     },
     {
       "type": "select",
@@ -206,11 +314,33 @@
       "label": "t:sections.featured-blog.settings.columns_desktop.label"
     },
     {
-      "type": "color_scheme",
+      "type": "select",
       "id": "color_scheme",
+      "options": [
+        {
+          "value": "accent-1",
+          "label": "t:sections.all.colors.accent_1.label"
+        },
+        {
+          "value": "accent-2",
+          "label": "t:sections.all.colors.accent_2.label"
+        },
+        {
+          "value": "background-1",
+          "label": "t:sections.all.colors.background_1.label"
+        },
+        {
+          "value": "background-2",
+          "label": "t:sections.all.colors.background_2.label"
+        },
+        {
+          "value": "inverse",
+          "label": "t:sections.all.colors.inverse.label"
+        }
+      ],
+      "default": "background-1",
       "label": "t:sections.all.colors.label",
-      "info": "t:sections.all.colors.has_cards_info",
-      "default": "background-1"
+      "info": "t:sections.all.colors.has_cards_info"
     },
     {
       "type": "checkbox",

@@ -1,19 +1,70 @@
 {
   "sections": {
+    "cf2af59e-cc4c-42eb-bebf-bcd9b2aa7cbc": {
+      "type": "image-banner",
+      "blocks": {
+        "template--16029600481439__cf2af59e-cc4c-42eb-bebf-bcd9b2aa7cbc-167455703414d3af97-0": {
+          "type": "heading",
+          "settings": {
+            "banner_desc": "Home    &gt;    Blog",
+            "heading": "BLOG",
+            "heading_size": "h1"
+          }
+        },
+        "template--16029600481439__cf2af59e-cc4c-42eb-bebf-bcd9b2aa7cbc-167455703414d3af97-1": {
+          "type": "text",
+          "settings": {
+            "text": "",
+            "text_style": "body"
+          }
+        },
+        "template--16029600481439__cf2af59e-cc4c-42eb-bebf-bcd9b2aa7cbc-167455703414d3af97-2": {
+          "type": "buttons",
+          "settings": {
+            "button_label_1": "",
+            "button_link_1": "",
+            "button_style_secondary_1": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "template--16029600481439__cf2af59e-cc4c-42eb-bebf-bcd9b2aa7cbc-167455703414d3af97-0",
+        "template--16029600481439__cf2af59e-cc4c-42eb-bebf-bcd9b2aa7cbc-167455703414d3af97-1",
+        "template--16029600481439__cf2af59e-cc4c-42eb-bebf-bcd9b2aa7cbc-167455703414d3af97-2"
+      ],
+      "settings": {
+        "image": "shopify:\/\/shop_images\/Group_4834.png",
+        "image_overlay_opacity": 0,
+        "image_height": "medium",
+        "adapt_height_first_image": false,
+        "desktop_content_position": "bottom-right",
+        "show_text_box": true,
+        "desktop_content_alignment": "center",
+        "color_scheme": "background-1",
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": true,
+        "show_text_below": true
+      }
+    },
     "main": {
       "type": "main-blog",
       "settings": {
+        "heading": "“Make My Life Easier”",
         "layout": "collage",
         "show_image": true,
         "image_height": "medium",
         "show_date": true,
-        "show_author": false,
-        "padding_top": 36,
-        "padding_bottom": 36
+        "show_author": true,
+        "padding_top": 60,
+        "padding_bottom": 100
       }
     }
   },
   "order": [
+    "cf2af59e-cc4c-42eb-bebf-bcd9b2aa7cbc",
     "main"
   ]
 }

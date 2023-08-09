@@ -6,10 +6,9 @@
   - enable_filtering: {Boolean} Show filtering when true
   - enable_sorting: {Boolean} Show sorting when true
   - filter_type: {String} Type of filter
-  - paginate: {Object}
 
   Usage:
-  {% render 'facets', results: collection, enable_filtering: true, enable_sorting: true, filter_type: 'vertical', paginate: paginate %}
+  {% render 'facets', results: collection, enable_filtering: true, enable_sorting: true, filter_type: 'vertical' %}
 {% endcomment %}
 
 {{ 'component-show-more.css' | asset_url | stylesheet_tag }}
@@ -25,13 +24,14 @@
   endif
 -%}
 
-<div class="facets-container{% if filter_type == 'drawer' %} facets-container-drawer{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
+<div class="facets-container{% if filter_type == 'drawer' %} facets-container-drawer{% endif %}">
   {%- if filter_type == 'vertical' or filter_type == 'horizontal' -%}
     <facet-filters-form class="facets small-hide">
       <form
         id="FacetFiltersForm"
         class="{% if filter_type == 'horizontal' %}facets__form{% else %}facets__form-vertical{% endif %}"
       >
+        <p class="facet-filter-title">Organizers & visors</p>
         {%- if results.terms -%}
           <input type="hidden" name="q" value="{{ results.terms | escape }}">
           <input name="options[prefix]" type="hidden" value="last">
@@ -116,7 +116,7 @@
                 {% when 'boolean', 'list' %}
                   <details
                     id="Details-{{ forloop.index }}-{{ section.id }}"
-                    class="{% if filter.label == 'Color' %}color{% endif %}{% if filter_type == 'horizontal' %}disclosure-has-popup facets__disclosure{% else %} facets__disclosure-vertical{% endif %} js-filter"
+                    class="{% if filter_type == 'horizontal' %}disclosure-has-popup facets__disclosure{% else %} facets__disclosure-vertical{% endif %} js-filter"
                     data-index="{{ forloop.index }}"
                     {% if filter_type == 'vertical' and forloop.index == 1 %}
                       open
@@ -163,14 +163,14 @@
                           {%- for value in filter.values -%}
                             <li class="list-menu__item facets__item{% if forloop.index > 10 and filter_type == 'vertical' %} show-more-item hidden{% endif %}">
                               <label
-                                for="Filter-{{ filter.param_name | escape }}-{{ forloop.index }}"
+                                for="Filter-{{ filter.label | escape }}-{{ forloop.index }}"
                                 class="facet-checkbox{% if value.count == 0 and value.active == false %} facet-checkbox--disabled{% endif %}"
                               >
                                 <input
                                   type="checkbox"
                                   name="{{ value.param_name }}"
                                   value="{{ value.value }}"
-                                  id="Filter-{{ filter.param_name | escape }}-{{ forloop.index }}"
+                                  id="Filter-{{ filter.label | escape }}-{{ forloop.index }}"
                                   {% if value.active %}
                                     checked
                                   {% endif %}
@@ -190,7 +190,6 @@
                                 </svg>
 
                                 <svg
-                                  aria-hidden="true"
                                   class="icon icon-checkmark"
                                   width="1.1rem"
                                   height="0.7rem"
@@ -219,38 +218,22 @@
                             </li>
                           {%- endfor -%}
                         </ul>
-                        <div class="color_group">
-                          {%- for filter_value in filter.values -%}
-                          {% if filter.label == 'Color' %}
-                            {%- capture color_id -%}filter-color-{% increment color_index %}{%- endcapture -%}
-                            {%- assign downcased_value = filter_value.label | downcase -%}
-                            
-                            <div class="color-swatch {% if downcased_value == 'white' or downcased_value == 'blanc' or downcased_value == 'branco' %}color-swatch--white{% endif %}">
-                              <input class="color-swatch__radio" type="checkbox" name="{{ filter.param_name }}" id="mobile-{{ filter_value.param_name }}-{{ filter_value.value }}" value="{{ filter_value.value }}" {% if filter_value.active %}checked{% endif %}>
-                                <label for="mobile-{{ filter_value.param_name }}-{{ filter_value.value }}" style=" background: {{ filter_value.label }};" class="color-swatch__button color-swatch__button--labelled {% if filter_value.active %}is-selected{% endif %}">
-                                <span class="color-swatch__item" style=" background: {{ filter_value.label }};"></span>
-                                <span class="color-swatch__label">{{ filter_value.label }}</span>
-                              </label>
-                            </div>
-                          {% endif %}
-                      {%- endfor -%}
-                        </div>
                         {% comment %} No show more for no JS {% endcomment %}
                         <ul
-                          class="{% if filter_type != 'vertical' %} facets__list{% endif %} no-js-list list-unstyled no-js"
+                          class="{% if filter_type != 'vertical' %} facets__list{% endif %} list-unstyled no-js"
                           role="list"
                         >
                           {%- for value in filter.values -%}
                             <li class="list-menu__item facets__item">
                               <label
-                                for="Filter-{{ filter.param_name | escape }}-{{ forloop.index }}-no-js"
+                                for="Filter-{{ filter.label | escape }}-{{ forloop.index }}"
                                 class="facet-checkbox{% if value.count == 0 and value.active == false %} facet-checkbox--disabled{% endif %}"
                               >
                                 <input
                                   type="checkbox"
                                   name="{{ value.param_name }}"
                                   value="{{ value.value }}"
-                                  id="Filter-{{ filter.param_name | escape }}-{{ forloop.index }}-no-js"
+                                  id="Filter-{{ filter.label | escape }}-{{ forloop.index }}"
                                   {% if value.active %}
                                     checked
                                   {% endif %}
@@ -270,7 +253,6 @@
                                 </svg>
 
                                 <svg
-                                  aria-hidden="true"
                                   class="icon icon-checkmark"
                                   width="1.1rem"
                                   height="0.7rem"
@@ -533,6 +515,7 @@
               <svg
                 aria-hidden="true"
                 focusable="false"
+                role="presentation"
                 class="spinner"
                 viewBox="0 0 66 66"
                 xmlns="http://www.w3.org/2000/svg"
@@ -687,7 +670,7 @@
                             {%- for value in filter.values -%}
                               <li class="mobile-facets__item list-menu__item">
                                 <label
-                                  for="Filter-{{ filter.param_name | escape }}-mobile-{{ forloop.index }}"
+                                  for="Filter-{{ filter.label | escape }}-mobile-{{ forloop.index }}"
                                   class="mobile-facets__label{% if value.count == 0 and value.active == false %} mobile-facets__label--disabled{% endif %}"
                                 >
                                   <input
@@ -695,7 +678,7 @@
                                     type="checkbox"
                                     name="{{ value.param_name }}"
                                     value="{{ value.value }}"
-                                    id="Filter-{{ filter.param_name | escape }}-mobile-{{ forloop.index }}"
+                                    id="Filter-{{ filter.label | escape }}-mobile-{{ forloop.index }}"
                                     {% if value.active %}
                                       checked
                                     {% endif %}
@@ -717,7 +700,6 @@
                                   </svg>
 
                                   <svg
-                                    aria-hidden="true"
                                     class="icon icon-checkmark"
                                     width="1.1rem"
                                     height="0.7rem"
@@ -745,7 +727,7 @@
 
                           <div class="no-js-hidden mobile-facets__footer gradient">
                             <facet-remove class="mobile-facets__clear-wrapper">
-                              <a href="{{ filter.url_to_remove }}" class="mobile-facets__clear underlined-link">
+                              <a href="{{ results_url }}" class="mobile-facets__clear underlined-link">
                                 {{- 'products.facets.clear' | t -}}
                               </a>
                             </facet-remove>
@@ -855,7 +837,7 @@
                           </price-range>
                           <div class="no-js-hidden mobile-facets__footer">
                             <facet-remove class="mobile-facets__clear-wrapper">
-                              <a href="{{ filter.url_to_remove }}" class="mobile-facets__clear underlined-link">
+                              <a href="{{ results_url }}" class="mobile-facets__clear underlined-link">
                                 {{- 'products.facets.clear' | t -}}
                               </a>
                             </facet-remove>
@@ -1060,6 +1042,7 @@
       <svg
         aria-hidden="true"
         focusable="false"
+        role="presentation"
         class="spinner"
         viewBox="0 0 66 66"
         xmlns="http://www.w3.org/2000/svg"

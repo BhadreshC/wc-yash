@@ -2,263 +2,193 @@
   "sections": {
     "image_banner": {
       "type": "image-banner",
+      "disabled": true,
       "blocks": {
-        "f0b6f1e8-ec6a-4842-ba60-a5c75131bd91": {
-          "type": "slider",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/Banner_1a1a8016-e07f-446a-9c10-373a192a272f.png",
-            "image_overlay_opacity": 0,
-            "image_height": "large",
-            "desktop_content_position": "middle-center",
-            "show_text_box": true,
-            "desktop_content_alignment": "center",
-            "color_scheme": "background-1",
-            "image_behavior": "none",
-            "mobile_content_alignment": "center",
-            "stack_images_on_mobile": true,
-            "show_text_below": true,
-            "heading": "",
-            "heading_size": "h1",
-            "text": "",
-            "text_style": "body",
-            "button_label_1": "",
-            "button_link_1": "",
-            "button_style_secondary_1": false,
-            "button_label_2": "",
-            "button_link_2": "",
-            "button_style_secondary_2": false
-          }
-        },
-        "0d0e30e7-8493-43ae-a446-212701ebbf6a": {
-          "type": "slider",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/Banner_1a1a8016-e07f-446a-9c10-373a192a272f.png",
-            "image_overlay_opacity": 0,
-            "image_height": "large",
-            "desktop_content_position": "middle-center",
-            "show_text_box": true,
-            "desktop_content_alignment": "center",
-            "color_scheme": "background-1",
-            "image_behavior": "none",
-            "mobile_content_alignment": "center",
-            "stack_images_on_mobile": true,
-            "show_text_below": true,
-            "heading": "",
-            "heading_size": "h1",
-            "text": "",
-            "text_style": "body",
-            "button_label_1": "",
-            "button_link_1": "",
-            "button_style_secondary_1": false,
-            "button_label_2": "",
-            "button_link_2": "",
-            "button_style_secondary_2": false
-          }
-        }
-      },
-      "block_order": [
-        "f0b6f1e8-ec6a-4842-ba60-a5c75131bd91",
-        "0d0e30e7-8493-43ae-a446-212701ebbf6a"
-      ],
-      "settings": {
-      }
-    },
-    "4e8166b3-c247-4b2b-974e-419f1217e470": {
-      "type": "collection-list",
-      "blocks": {
-        "template--16147870941343__4e8166b3-c247-4b2b-974e-419f1217e470-1689682244338544b6-0": {
-          "type": "featured_collection",
-          "settings": {
-            "collection": "blazers"
-          }
-        },
-        "template--16147870941343__4e8166b3-c247-4b2b-974e-419f1217e470-1689682244338544b6-1": {
-          "type": "featured_collection",
-          "settings": {
-            "collection": "jackets"
-          }
-        },
-        "template--16147870941343__4e8166b3-c247-4b2b-974e-419f1217e470-1689682244338544b6-2": {
-          "type": "featured_collection",
-          "settings": {
-            "collection": "shop-arrivals"
-          }
-        },
-        "f84530bb-c496-4e69-874e-38b6c8a84e40": {
-          "type": "featured_collection",
-          "settings": {
-            "collection": "shop-collection"
-          }
-        }
-      },
-      "block_order": [
-        "template--16147870941343__4e8166b3-c247-4b2b-974e-419f1217e470-1689682244338544b6-0",
-        "template--16147870941343__4e8166b3-c247-4b2b-974e-419f1217e470-1689682244338544b6-1",
-        "template--16147870941343__4e8166b3-c247-4b2b-974e-419f1217e470-1689682244338544b6-2",
-        "f84530bb-c496-4e69-874e-38b6c8a84e40"
-      ],
-      "settings": {
-        "title": "Top Picks",
-        "heading_size": "h1",
-        "image_ratio": "square",
-        "columns_desktop": 4,
-        "color_scheme": "",
-        "show_view_all": false,
-        "columns_mobile": "1",
-        "swipe_on_mobile": false,
-        "padding_top": 40,
-        "padding_bottom": 40
-      }
-    },
-    "ebc7df67-cd0e-480f-a982-9a2fe134449e": {
-      "type": "featured-collection",
-      "settings": {
-        "title": "Featured Products",
-        "heading_size": "h1",
-        "description": "",
-        "show_description": false,
-        "description_style": "body",
-        "collection": "baby-skin-care",
-        "products_to_show": 7,
-        "columns_desktop": 5,
-        "full_width": false,
-        "show_view_all": false,
-        "view_all_style": "outline",
-        "enable_desktop_slider": true,
-        "color_scheme": "",
-        "image_ratio": "adapt",
-        "image_shape": "default",
-        "show_secondary_image": true,
-        "show_vendor": false,
-        "show_rating": true,
-        "enable_quick_add": true,
-        "columns_mobile": "2",
-        "swipe_on_mobile": true,
-        "padding_top": 40,
-        "padding_bottom": 40
-      }
-    },
-    "158ae401-2edd-470a-b2b9-13db48e60118": {
-      "type": "image-with-content",
-      "blocks": {
-        "05a0130c-9c5c-480b-9e39-e127b7913fff": {
-          "type": "image_content",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/IMAGE_3_46b7b1b6-e905-4e30-ae05-f1b74fa29edf.png",
-            "title": "15% OFF",
-            "discription": "Let us help you with your homebuilt aircraft.",
-            "btn_text": "LEARN MORE",
-            "link": ""
-          }
-        },
-        "8868f61b-a7d3-4bf4-94b8-8afeb44227d2": {
-          "type": "image_content",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/IMAGE_4.png",
-            "title": "$100 OFF",
-            "discription": "Enjoy drinking your favorite beverage from our stainless .",
-            "btn_text": "SHOP NOW",
-            "link": ""
-          }
-        }
-      },
-      "block_order": [
-        "05a0130c-9c5c-480b-9e39-e127b7913fff",
-        "8868f61b-a7d3-4bf4-94b8-8afeb44227d2"
-      ],
-      "settings": {
-        "padding_top": 24,
-        "padding_bottom": 24
-      }
-    },
-    "7f0afc42-06a3-4bda-adb3-f6eb2fc7e408": {
-      "type": "slideshow",
-      "blocks": {
-        "template--16147870941343__7f0afc42-06a3-4bda-adb3-f6eb2fc7e408-168976936664e0e458-0": {
-          "type": "slide",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/Image_2_fda236a6-6e96-4ae9-a0ba-670255775983.png",
-            "heading": "Shop EAA Merchandise",
-            "banner_desc": "make DECEMBER special",
-            "heading_size": "h1",
-            "subheading": "From how-to books and DVDs to co-branded Flight Outfitters, and everything in between.",
-            "button_label": "SUBSCRIBE TODAY",
-            "link": "",
-            "button_label1": "SHOP MERCHANDISE",
-            "link1": "",
-            "button_style_secondary": false,
-            "box_align": "middle-left",
-            "show_text_box": false,
-            "text_alignment": "center",
-            "image_overlay_opacity": 0,
-            "color_scheme": "",
-            "text_alignment_mobile": "center"
-          }
-        }
-      },
-      "block_order": [
-        "template--16147870941343__7f0afc42-06a3-4bda-adb3-f6eb2fc7e408-168976936664e0e458-0"
-      ],
-      "settings": {
-        "layout": "full_bleed",
-        "slide_height": "medium",
-        "slider_visual": "counter",
-        "auto_rotate": false,
-        "change_slides_speed": 5,
-        "image_behavior": "none",
-        "show_text_below": true,
-        "accessibility_info": "Slideshow about our brand"
-      }
-    },
-    "359df399-7c81-4b49-b88e-6e453eef24fb": {
-      "type": "featured-collection",
-      "settings": {
-        "title": "Gifts for Holidays",
-        "heading_size": "h1",
-        "description": "",
-        "show_description": false,
-        "description_style": "body",
-        "collection": "shop-skirt",
-        "products_to_show": 8,
-        "columns_desktop": 5,
-        "full_width": false,
-        "show_view_all": true,
-        "view_all_style": "link",
-        "enable_desktop_slider": true,
-        "color_scheme": "",
-        "image_ratio": "adapt",
-        "image_shape": "default",
-        "show_secondary_image": false,
-        "show_vendor": false,
-        "show_rating": false,
-        "enable_quick_add": true,
-        "columns_mobile": "2",
-        "swipe_on_mobile": true,
-        "padding_top": 40,
-        "padding_bottom": 40
-      }
-    },
-    "4c17ce93-30e8-4ace-bdbe-2e3cc3e0eb6f": {
-      "type": "rich-text",
-      "blocks": {
-        "template--16147870941343__4c17ce93-30e8-4ace-bdbe-2e3cc3e0eb6f-1689749470d1ddbab1-0": {
+        "heading": {
           "type": "heading",
           "settings": {
-            "heading": "Save 10% on your first purchase",
+            "banner_desc": "<p>Welcome to skullvibe<\/p>",
+            "heading": "BEST Rifle <span> Organizer <\/span>\n& GUN CLUB SINCE <span> 2006 <\/span>",
             "heading_size": "h0"
           }
         },
-        "template--16147870941343__4c17ce93-30e8-4ace-bdbe-2e3cc3e0eb6f-1689749470d1ddbab1-1": {
+        "text": {
           "type": "text",
           "settings": {
-            "text": "<p>Sign up today and we'll send you a 10% discount code towards your first purchase.<\/p>"
+            "text": "Always stay organized & clutter-free with this  Tactical MOLLE EDC Visor Panel, It is designed to keep small everyday gear within easy reach. If you drive often, and you",
+            "text_style": "body"
           }
         },
-        "template--16147870941343__4c17ce93-30e8-4ace-bdbe-2e3cc3e0eb6f-1689749470d1ddbab1-2": {
-          "type": "button",
-          "disabled": true,
+        "button": {
+          "type": "buttons",
           "settings": {
-            "button_label": "Button label",
+            "button_label_1": "Shop all",
+            "button_link_1": "shopify:\/\/collections\/all",
+            "button_style_secondary_1": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "heading",
+        "text",
+        "button"
+      ],
+      "settings": {
+        "image": "shopify:\/\/shop_images\/Group_4874.png",
+        "image_overlay_opacity": 0,
+        "image_height": "large",
+        "adapt_height_first_image": true,
+        "desktop_content_position": "middle-left",
+        "show_text_box": false,
+        "desktop_content_alignment": "center",
+        "color_scheme": "background-1",
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": false,
+        "show_text_below": false
+      }
+    },
+    "09604da9-01f6-45a3-9bbe-1092726f8bba": {
+      "type": "image-banner-slider",
+      "blocks": {
+        "6af4caaf-fb46-4cf7-b7e4-1eba4320be7d": {
+          "type": "slider",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Group_4874_1.png",
+            "image_height": "large",
+            "adapt_height_first_image": false,
+            "show_text_box": true,
+            "color_scheme": "background-1",
+            "mobile_content_alignment": "center",
+            "stack_images_on_mobile": true,
+            "show_text_below": true,
+            "banner_desc": "Welcome to skullvibe",
+            "heading": "BEST Rifle <span> Organizer <\/span>\n& GUN CLUB SINCE <span> 2006 <\/span>",
+            "heading_size": "h1",
+            "text": "Always stay organized & clutter-free with this  Tactical MOLLE EDC Visor Panel, It is designed to keep small everyday gear within easy reach. If you drive often, and you",
+            "text_style": "body",
+            "button_label_1": "Shop all",
+            "button_link_1": "",
+            "button_style_secondary_1": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        },
+        "c00cd72d-4a7d-4f2e-b4f1-9bed23d5f95d": {
+          "type": "slider",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Group_4874.png",
+            "image_height": "large",
+            "adapt_height_first_image": false,
+            "show_text_box": true,
+            "color_scheme": "background-1",
+            "mobile_content_alignment": "center",
+            "stack_images_on_mobile": true,
+            "show_text_below": true,
+            "banner_desc": "",
+            "heading": "Image banner",
+            "heading_size": "h1",
+            "text": "Give customers details about the banner image(s) or content on the template.",
+            "text_style": "body",
+            "button_label_1": "Button label",
+            "button_link_1": "",
+            "button_style_secondary_1": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "6af4caaf-fb46-4cf7-b7e4-1eba4320be7d",
+        "c00cd72d-4a7d-4f2e-b4f1-9bed23d5f95d"
+      ],
+      "settings": {
+      }
+    },
+    "3b221fc8-3d05-4a14-9259-a0580dcea66e": {
+      "type": "shop-collection",
+      "blocks": {
+        "f16c5072-eadd-4bd6-aade-602dfff46363": {
+          "type": "shop",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Group_4804.png",
+            "title": "Travel Bags",
+            "description": "",
+            "btn_text": "buy now",
+            "view_all_style": "solid",
+            "button_link": ""
+          }
+        },
+        "ca5b2257-408d-4add-b26f-2ca8f7e4b29b": {
+          "type": "shop",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Group_4801.png",
+            "title": "Tactical Backpacks",
+            "description": "",
+            "btn_text": "buy now",
+            "view_all_style": "solid",
+            "button_link": ""
+          }
+        },
+        "c839d51e-4ccf-4346-928e-678533b8b338": {
+          "type": "shop",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Group_4803.png",
+            "title": "Dog molle Harness",
+            "description": "",
+            "btn_text": "buy now",
+            "view_all_style": "solid",
+            "button_link": ""
+          }
+        },
+        "cc404389-3856-4ba4-b494-69cbce175718": {
+          "type": "shop",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Group_4802.png",
+            "title": "Rifle Organizer",
+            "description": "Tactical",
+            "btn_text": "explore now",
+            "view_all_style": "solid",
+            "button_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "f16c5072-eadd-4bd6-aade-602dfff46363",
+        "ca5b2257-408d-4add-b26f-2ca8f7e4b29b",
+        "c839d51e-4ccf-4346-928e-678533b8b338",
+        "cc404389-3856-4ba4-b494-69cbce175718"
+      ],
+      "settings": {
+        "padding_top": 44,
+        "padding_bottom": 12
+      }
+    },
+    "rich_text": {
+      "type": "rich-text",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "<p>60L Large Tactical Canvas Backpacks<\/p>",
+            "mob_heading": "<p>60L Large Tactical<\/p>"
+          }
+        },
+        "afed3b03-cb93-4d92-871a-a06215631ec8": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.<\/p>",
+            "mob_text": "<p>Share information about your brand <\/p>"
+          }
+        },
+        "9cd9881f-794d-4d77-8710-d22084689a1b": {
+          "type": "button",
+          "settings": {
+            "button_label": "buy now",
             "button_link": "",
             "button_style_secondary": false,
             "button_label_2": "",
@@ -268,202 +198,254 @@
         }
       },
       "block_order": [
-        "template--16147870941343__4c17ce93-30e8-4ace-bdbe-2e3cc3e0eb6f-1689749470d1ddbab1-0",
-        "template--16147870941343__4c17ce93-30e8-4ace-bdbe-2e3cc3e0eb6f-1689749470d1ddbab1-1",
-        "template--16147870941343__4c17ce93-30e8-4ace-bdbe-2e3cc3e0eb6f-1689749470d1ddbab1-2"
+        "heading",
+        "afed3b03-cb93-4d92-871a-a06215631ec8",
+        "9cd9881f-794d-4d77-8710-d22084689a1b"
       ],
       "settings": {
-        "bg_img": "shopify:\/\/shop_images\/Image_1.png",
-        "desktop_content_position": "center",
+        "image": "shopify:\/\/shop_images\/Group_4806.png",
         "content_alignment": "center",
-        "color_scheme": "",
+        "color_scheme": "background-1",
         "full_width": true,
-        "padding_top": 100,
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "8162a7b3-cc69-4aad-aaa5-5a51520522a5": {
+      "type": "product-logo",
+      "blocks": {
+        "bf5a3d8c-9261-49c8-8353-47e87c9b145b": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/esquire_1.png",
+            "description": ""
+          }
+        },
+        "8f65db48-5adf-43d6-881a-0174bba453cc": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Group_26_699caf6f-6839-404c-ada7-ef6a8dec92db.png",
+            "description": ""
+          }
+        },
+        "ee284f62-57f8-4c6f-9b85-d646ae7e6fc7": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Group_27.png",
+            "description": ""
+          }
+        },
+        "3ab5e03f-02cd-4120-9ee7-5fac933f0553": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Stylist_1.png",
+            "description": ""
+          }
+        },
+        "4b823001-20f8-4698-b6d5-cfc38a799600": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Group_28.png",
+            "description": ""
+          }
+        },
+        "54d16edf-fc5d-4eb9-a003-84e95481c3ec": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Group_29.png",
+            "description": ""
+          }
+        }
+      },
+      "block_order": [
+        "bf5a3d8c-9261-49c8-8353-47e87c9b145b",
+        "8f65db48-5adf-43d6-881a-0174bba453cc",
+        "ee284f62-57f8-4c6f-9b85-d646ae7e6fc7",
+        "3ab5e03f-02cd-4120-9ee7-5fac933f0553",
+        "4b823001-20f8-4698-b6d5-cfc38a799600",
+        "54d16edf-fc5d-4eb9-a003-84e95481c3ec"
+      ],
+      "settings": {
+        "padding_top": 52,
+        "padding_bottom": 52
+      }
+    },
+    "featured_collection": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "new arrivals",
+        "bg_title": "products",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
+        "collection": "all",
+        "products_to_show": 4,
+        "columns_desktop": 4,
+        "full_width": false,
+        "show_view_all": false,
+        "view_all_style": "solid",
+        "enable_desktop_slider": false,
+        "color_scheme": "background-1",
+        "image_ratio": "adapt",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": true,
+        "enable_quick_add": true,
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 28,
         "padding_bottom": 100
       }
     },
-    "69fcbf9f-9d38-47f1-b129-e8dc2595ba1a": {
-      "type": "our-resources",
+    "multicolumn": {
+      "type": "multicolumn",
       "blocks": {
-        "f9346bf2-8f17-4be9-8eb0-ee149741d409": {
-          "type": "blog",
+        "column1": {
+          "type": "column",
           "settings": {
-            "image": "shopify:\/\/shop_images\/image_2881.png",
-            "title": "Always Strive to be Better",
-            "discription": "In a recent column for EAA Sport Aviation, contributor Steve Krog discusses the importance of ...",
-            "btn_txt": "Read More",
+            "image": "shopify:\/\/shop_images\/Ellipse_9.png",
+            "title": "Very Nice Product !",
+            "date": "15 January, 2022",
+            "text": "<p>Very high quality and capacity is good! Perfect for hiking! The fabric is strong, the seams are good, but for strength in some places, we again strengthened.<\/p>",
+            "link_label": "",
             "link": ""
           }
         },
-        "1392ee35-7818-4205-91a2-cc7a67d98f87": {
-          "type": "blog",
+        "column2": {
+          "type": "column",
           "settings": {
-            "image": "shopify:\/\/shop_images\/image_2883.png",
-            "title": "Barling Bomber’ Strut",
-            "discription": "",
-            "btn_txt": "Read More",
+            "image": "shopify:\/\/shop_images\/Ellipse_10_2111cbee-a3c1-4f5c-a899-961503304d20.png",
+            "title": "Very Nice Product !",
+            "date": "15 January, 2022",
+            "text": "<p>Very high quality and capacity is good! Perfect for hiking! The fabric is strong, the seams are good, but for strength in some places, we again strengthened.<\/p>",
+            "link_label": "",
             "link": ""
           }
         },
-        "d1c62ad1-3212-42cc-9292-4441c20e7baf": {
-          "type": "blog",
+        "column3": {
+          "type": "column",
           "settings": {
-            "image": "shopify:\/\/shop_images\/image_2882.png",
-            "title": "Hot Air Ballonist Mike Beck Featured in Museum Speaker Series",
-            "discription": "",
-            "btn_txt": "read more",
+            "image": "shopify:\/\/shop_images\/Ellipse_11_13b117af-4348-4a02-a91c-41a73768edd0.png",
+            "title": "Laura doe",
+            "date": "15 January, 2022",
+            "text": "<p>Very high quality and capacity is good! Perfect for hiking! The fabric is strong, the seams are good, but for strength in some places, we again strengthened.<\/p>",
+            "link_label": "",
             "link": ""
           }
         },
-        "0e8fc4db-b262-4ac6-a393-e6523393d89f": {
-          "type": "blog",
+        "bf3983d6-e3d1-496d-8712-3cc320c28ccd": {
+          "type": "column",
           "settings": {
-            "image": "shopify:\/\/shop_images\/image_2883_1.png",
-            "title": "A Young Eagle and an Aging Hawk",
-            "discription": "",
-            "btn_txt": "Read More",
+            "image": "shopify:\/\/shop_images\/Ellipse_11_ed7dcdd1-814f-40a4-8463-767d7c55aa16.png",
+            "title": "Laura doe",
+            "date": "15 January, 2022",
+            "text": "<p>Very high quality and capacity is good! Perfect for hiking! The fabric is strong, the seams are good, but for strength in some places, we again strengthened.<\/p>",
+            "link_label": "",
             "link": ""
           }
         }
       },
       "block_order": [
-        "f9346bf2-8f17-4be9-8eb0-ee149741d409",
-        "1392ee35-7818-4205-91a2-cc7a67d98f87",
-        "d1c62ad1-3212-42cc-9292-4441c20e7baf",
-        "0e8fc4db-b262-4ac6-a393-e6523393d89f"
+        "column1",
+        "column2",
+        "column3",
+        "bf3983d6-e3d1-496d-8712-3cc320c28ccd"
       ],
       "settings": {
-        "main_title": "Our Resources",
-        "latest_artical": "Our Latest Articles",
-        "view_all": "VIEW ALL",
-        "view_link": "",
-        "padding_top": 60,
-        "padding_bottom": 60,
-        "padding_mob_top": 20,
-        "padding_mob_bottom": 20
+        "title": "Our customers says",
+        "image_width": "third",
+        "image_ratio": "adapt",
+        "columns_desktop": 3,
+        "column_alignment": "left",
+        "background_style": "none",
+        "button_label": "",
+        "button_link": "",
+        "color_scheme": "inverse",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 44,
+        "padding_bottom": 36
       }
     },
-    "23de4530-6c69-4d2a-8faf-57a871c594e7": {
-      "type": "image-with-content-2",
+    "43a4a469-e0e7-4ec6-99ef-5a7773fe5023": {
+      "type": "product-logo",
       "blocks": {
-        "8cdcff17-6eaa-4794-a3aa-234ef88fea77": {
-          "type": "image_content",
+        "dc5e685b-6f8e-429e-8689-c8370b6bc643": {
+          "type": "image",
           "settings": {
-            "image": "shopify:\/\/shop_images\/IMAGE_8.png",
-            "title": "How-To Books & DVDs",
-            "discription": "Let us help you with your homebuilt aircraft.",
-            "btn_text": "LEARN MORE",
-            "link": ""
+            "image": "shopify:\/\/shop_images\/Group_4875.png",
+            "description": "Top Rated Products"
           }
         },
-        "2be3226d-8125-4443-81a1-bfbbdcbfbf91": {
-          "type": "image_content",
+        "ac8d1f59-ceb2-4743-9503-05959f4670b0": {
+          "type": "image",
           "settings": {
-            "image": "shopify:\/\/shop_images\/IMAGE_9.png",
-            "title": "Check our Featured Products",
-            "discription": "Enjoy drinking your favorite beverage from our stainless steel thermal water bottles.",
-            "btn_text": "SHOP NOW",
-            "link": ""
+            "image": "shopify:\/\/shop_images\/Group_4876.png",
+            "description": "Free Worldwide Shipping"
           }
         },
-        "f5997335-ecf5-4313-8a9c-cfabe5d19d28": {
-          "type": "image_content",
+        "4737efdc-b1e7-4cea-a92a-b2b104eda501": {
+          "type": "image",
           "settings": {
-            "image": "shopify:\/\/shop_images\/IMAGE_10.png",
-            "title": "Shop EAA on Amazon",
-            "discription": "Amazon prime members receive two-day free shipping.",
-            "btn_text": "SHOP NOW",
-            "link": ""
+            "image": "shopify:\/\/shop_images\/Group_4877.png",
+            "description": "Return Policy - 30days"
+          }
+        },
+        "9044694f-1cff-43dd-808d-49ade777754a": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Group_4878.png",
+            "description": "Support Our Veterans"
+          }
+        },
+        "5c9c149b-130e-4df5-88c4-f4aec847004f": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Group_4879.png",
+            "description": "SSL Secured Checkout"
           }
         }
       },
       "block_order": [
-        "8cdcff17-6eaa-4794-a3aa-234ef88fea77",
-        "2be3226d-8125-4443-81a1-bfbbdcbfbf91",
-        "f5997335-ecf5-4313-8a9c-cfabe5d19d28"
+        "dc5e685b-6f8e-429e-8689-c8370b6bc643",
+        "ac8d1f59-ceb2-4743-9503-05959f4670b0",
+        "4737efdc-b1e7-4cea-a92a-b2b104eda501",
+        "9044694f-1cff-43dd-808d-49ade777754a",
+        "5c9c149b-130e-4df5-88c4-f4aec847004f"
       ],
       "settings": {
-        "padding_top": 24,
-        "padding_bottom": 48
+        "padding_top": 32,
+        "padding_bottom": 52
       }
     },
-    "ed591d5b-fb1f-4bc7-9176-ef3f77ede439": {
-      "type": "subscribe",
+    "893a6a58-cfb5-4842-a780-5155a5735090": {
+      "type": "featured-blog",
       "settings": {
-        "text": "Subscribe today and get 10% off your first purchase",
-        "padding_top": 40,
-        "padding_bottom": 40
-      }
-    },
-    "f22505b6-4fc2-4a4d-b8eb-9c79dde4798e": {
-      "type": "social-section",
-      "blocks": {
-        "ff72837e-9c77-4ba8-975e-bfa083112075": {
-          "type": "image",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/img_2.png"
-          }
-        },
-        "19b8db5f-2532-4e72-aaba-1db4853c8dfc": {
-          "type": "image",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/img_3.png"
-          }
-        },
-        "0642faff-e28a-44b0-b10a-fde72ff49b8e": {
-          "type": "image",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/img_4.png"
-          }
-        },
-        "3a5ae944-e168-401c-a42f-c3a1e1c96b74": {
-          "type": "image",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/img_5.png"
-          }
-        },
-        "b917bbf8-9792-407e-850d-aea123ca424d": {
-          "type": "image",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/img_3.png"
-          }
-        },
-        "421dddcf-462e-42c2-ba72-4b3cb583db07": {
-          "type": "image",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/img_4.png"
-          }
-        }
-      },
-      "block_order": [
-        "ff72837e-9c77-4ba8-975e-bfa083112075",
-        "19b8db5f-2532-4e72-aaba-1db4853c8dfc",
-        "0642faff-e28a-44b0-b10a-fde72ff49b8e",
-        "3a5ae944-e168-401c-a42f-c3a1e1c96b74",
-        "b917bbf8-9792-407e-850d-aea123ca424d",
-        "421dddcf-462e-42c2-ba72-4b3cb583db07"
-      ],
-      "settings": {
-        "heading": "Follow us @eaa",
-        "social-name": "",
-        "padding_top": 36,
-        "padding_bottom": 36,
-        "mob_padding_top": 36,
-        "mob_padding_bottom": 36
+        "heading": "LATEST BLOG & ARTICLES",
+        "bg_title": "OUR BLOGs",
+        "heading_size": "h0",
+        "blog": "news",
+        "post_limit": 4,
+        "columns_desktop": 3,
+        "color_scheme": "background-1",
+        "show_image": true,
+        "show_date": true,
+        "show_author": false,
+        "show_view_all": false,
+        "padding_top": 52,
+        "padding_bottom": 100
       }
     }
   },
   "order": [
     "image_banner",
-    "4e8166b3-c247-4b2b-974e-419f1217e470",
-    "ebc7df67-cd0e-480f-a982-9a2fe134449e",
-    "158ae401-2edd-470a-b2b9-13db48e60118",
-    "7f0afc42-06a3-4bda-adb3-f6eb2fc7e408",
-    "359df399-7c81-4b49-b88e-6e453eef24fb",
-    "4c17ce93-30e8-4ace-bdbe-2e3cc3e0eb6f",
-    "69fcbf9f-9d38-47f1-b129-e8dc2595ba1a",
-    "23de4530-6c69-4d2a-8faf-57a871c594e7",
-    "ed591d5b-fb1f-4bc7-9176-ef3f77ede439",
-    "f22505b6-4fc2-4a4d-b8eb-9c79dde4798e"
+    "09604da9-01f6-45a3-9bbe-1092726f8bba",
+    "3b221fc8-3d05-4a14-9259-a0580dcea66e",
+    "rich_text",
+    "8162a7b3-cc69-4aad-aaa5-5a51520522a5",
+    "featured_collection",
+    "multicolumn",
+    "43a4a469-e0e7-4ec6-99ef-5a7773fe5023",
+    "893a6a58-cfb5-4842-a780-5155a5735090"
   ]
 }

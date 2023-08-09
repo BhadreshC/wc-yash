@@ -1,5 +1,6 @@
 {{ 'section-multicolumn.css' | asset_url | stylesheet_tag }}
-{{ 'component-slider.css' | asset_url | stylesheet_tag }}
+<link rel="stylesheet" href="{{ 'component-slider.css' | asset_url }}" media="print" onload="this.media='all'">
+<noscript>{{ 'component-slider.css' | asset_url | stylesheet_tag }}</noscript>
 
 {%- style -%}
   .section-{{ section.id }}-padding {
@@ -22,18 +23,12 @@
     assign show_mobile_slider = true
   endif
 -%}
-
 <div class="multicolumn color-{{ section.settings.color_scheme }} gradient{% unless section.settings.background_style == 'none' and settings.text_boxes_border_thickness > 0 or settings.text_boxes_shadow_opacity > 0 %} background-{{ section.settings.background_style }}{% endunless %}{% if section.settings.title == blank %} no-heading{% endif %}">
-  <div
-    class="page-width section-{{ section.id }}-padding isolate{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
-    {% if settings.animations_reveal_on_scroll %}
-      data-cascade
-    {% endif %}
-  >
+  <div class="customer_review_cont section-{{ section.id }}-padding isolate">
     {%- unless section.settings.title == blank -%}
       <div class="title-wrapper-with-link title-wrapper--self-padded-mobile title-wrapper--no-top-margin">
-        <h2 class="title inline-richtext {{ section.settings.heading_size }}">
-          {{ section.settings.title }}
+        <h2 class="title customer-review-title">
+          {{ section.settings.title | escape }}
         </h2>
         {%- if section.settings.button_label != blank and show_mobile_slider -%}
           <a href="{{ section.settings.button_link }}" class="link underlined-link large-up-hide">
@@ -44,7 +39,7 @@
     {%- endunless -%}
     <slider-component class="slider-mobile-gutter">
       <ul
-        class="multicolumn-list contains-content-container grid grid--{{ section.settings.columns_mobile }}-col-tablet-down grid--{{ section.settings.columns_desktop }}-col-desktop{% if show_mobile_slider %} slider slider--mobile grid--peek{% endif %}"
+        class="customer_review_slider multicolumn-list contains-content-container  grid--{{ section.settings.columns_mobile }}-col-tablet-down grid--{{ section.settings.columns_desktop }}-col-desktop{% if show_mobile_slider %} slider slider--mobile grid--peek{% endif %}"
         id="Slider-{{ section.id }}"
         role="list"
       >
@@ -68,60 +63,79 @@
 
           <li
             id="Slide-{{ section.id }}-{{ forloop.index }}"
-            class="multicolumn-list__item grid__item{% if section.settings.swipe_on_mobile %} slider__slide{% endif %}{% if section.settings.column_alignment == 'center' %} center{% endif %}{{ empty_column }}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+            class="multicolumn-list__item grid__item{% if section.settings.swipe_on_mobile %} slider__slide{% endif %}{% if section.settings.column_alignment == 'center' %} center{% endif %}{{ empty_column }}"
             {{ block.shopify_attributes }}
-            {% if settings.animations_reveal_on_scroll %}
-              data-cascade
-              style="--animation-order: {{ forloop.index }};"
-            {% endif %}
           >
             <div class="multicolumn-card content-container">
               {%- if block.settings.image != blank -%}
                 {% if section.settings.image_ratio == 'adapt' or section.settings.image_ratio == 'circle' %}
                   {% assign spaced_image = true %}
                 {% endif %}
-                <div class="multicolumn-card__image-wrapper multicolumn-card__image-wrapper--{{ section.settings.image_width }}-width{% if section.settings.image_width != 'full' or spaced_image %} multicolumn-card-spacing{% endif %}">
+                <div class="multicolumn-card__image-wrapper ">
                   <div
-                    class="media media--transparent media--{{ section.settings.image_ratio }}"
-                    {% if section.settings.image_ratio == 'adapt' %}
-                      style="padding-bottom: {{ 1 | divided_by: highest_ratio | times: 100 }}%;"
-                    {% endif %}
+                    class="customer_img"
                   >
-                    {%- liquid
-                      assign number_of_columns = section.settings.columns_desktop
-                      assign number_of_columns_mobile = section.settings.columns_mobile
-                      assign grid_space_desktop = number_of_columns | minus: 1 | times: settings.spacing_grid_horizontal | plus: 100 | append: 'px'
-                      assign grid_space_tablet = number_of_columns_mobile | minus: 1 | times: settings.spacing_grid_horizontal | plus: 100 | append: 'px'
-                      assign grid_space_mobile = number_of_columns_mobile | minus: 1 | times: settings.spacing_grid_horizontal | divided_by: 2 | plus: 30 | append: 'px'
-                      if section.settings.image_width == 'half'
-                        assign image_width = 0.5
-                      elsif section.settings.image_width == 'third'
-                        assign image_width = 0.33
-                      else
-                        assign image_width = 1
-                      endif
-                    -%}
-                    {% capture sizes %}
-                      (min-width: {{ settings.page_width }}px) calc(({{ settings.page_width }}px - {{ grid_space_desktop }}) * {{ image_width }} /  {{ number_of_columns }}),
-                      (min-width: 990px) calc((100vw - {{ grid_space_desktop }}) * {{ image_width }} / {{ number_of_columns }}),
-                      (min-width: 750px) calc((100vw - {{ grid_space_tablet }}) * {{ image_width }} / {{ number_of_columns_mobile }}),
-                      calc((100vw - {{ grid_space_mobile }}) * {{ image_width }} / {{ number_of_columns_mobile }})
-                    {% endcapture %}
-                    {{
-                      block.settings.image
-                      | image_url: width: 3200
-                      | image_tag:
-                        loading: 'lazy',
-                        widths: '50, 75, 100, 150, 200, 300, 400, 500, 750, 1000, 1250, 1500, 1750, 2000, 2250, 2500, 2750, 3000, 3200',
-                        sizes: sizes,
-                        class: 'multicolumn-card__image'
-                    }}
+                    {{ block.settings.image | img_url: width: '100%' | img_tag: class: 'multicolumn-card__image' }}
+                  </div>
+                  <div class="cus_profile">
+                    <div class="cst_name">
+                      <p>John doe</p>
+                      <span>
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <g clip-path="url(#clip0_598_708)">
+                          <path d="M7 0C3.14005 0 0 3.14005 0 7C0 10.86 3.14005 14 7 14C10.86 14 14 10.86 14 7C14 3.14005 10.86 0 7 0Z" fill="#3FAB5C"/>
+                          <path d="M10.5478 5.51691L6.75609 9.3085C6.64233 9.42226 6.49301 9.47951 6.34369 9.47951C6.19437 9.47951 6.04504 9.42226 5.93129 9.3085L4.03549 7.4127C3.80734 7.18466 3.80734 6.81595 4.03549 6.58791C4.26353 6.35976 4.63214 6.35976 4.86029 6.58791L6.34369 8.07131L9.72299 4.69211C9.95103 4.46396 10.3196 4.46396 10.5478 4.69211C10.7758 4.92015 10.7758 5.28876 10.5478 5.51691Z" fill="#FAFAFA"/>
+                          </g>
+                          <defs>
+                          <clipPath id="clip0_598_708">
+                          <rect width="14" height="14" fill="white"/>
+                          </clipPath>
+                          </defs>
+                        </svg>
+                      </span>
+                    </div>
+                    <div class="review_img">
+                      <svg width="110" height="19" viewBox="0 0 110 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g clip-path="url(#clip0_243_5253)">
+                        <path d="M17.7127 6.50758L12.1191 5.65314L9.6119 0.312761C9.42463 -0.0860244 8.77035 -0.0860244 8.58309 0.312761L6.07666 5.65314L0.483053 6.50758C0.0236157 6.57808 -0.159856 7.13684 0.162356 7.46663L4.22602 11.6319L3.26545 17.5204C3.18888 17.9882 3.6885 18.3392 4.10169 18.1095L9.09787 15.3483L14.0941 18.1103C14.5035 18.3377 15.0076 17.9935 14.9303 17.5212L13.9697 11.6326L18.0334 7.46739C18.3556 7.13684 18.1714 6.57808 17.7127 6.50758Z" fill="#FFC107"/>
+                        </g>
+                        <g clip-path="url(#clip1_243_5253)">
+                        <path d="M62.3743 6.50758L56.7807 5.65314L54.2735 0.312761C54.0863 -0.0860244 53.432 -0.0860244 53.2447 0.312761L50.7383 5.65314L45.1447 6.50758C44.6852 6.57808 44.5018 7.13684 44.824 7.46663L48.8876 11.6319L47.9271 17.5204C47.8505 17.9882 48.3501 18.3392 48.7633 18.1095L53.7595 15.3483L58.7557 18.1103C59.1651 18.3377 59.6692 17.9935 59.5919 17.5212L58.6313 11.6326L62.695 7.46739C63.0172 7.13684 62.833 6.57808 62.3743 6.50758Z" fill="#FFC107"/>
+                        </g>
+                        <g clip-path="url(#clip2_243_5253)">
+                        <path d="M40.0434 6.50758L34.4498 5.65314L31.9426 0.312761C31.7554 -0.0860244 31.1011 -0.0860244 30.9138 0.312761L28.4074 5.65314L22.8138 6.50758C22.3543 6.57808 22.1709 7.13684 22.4931 7.46663L26.5567 11.6319L25.5962 17.5204C25.5196 17.9882 26.0192 18.3392 26.4324 18.1095L31.4286 15.3483L36.4248 18.1103C36.8342 18.3377 37.3383 17.9935 37.261 17.5212L36.3004 11.6326L40.3641 7.46739C40.6863 7.13684 40.5021 6.57808 40.0434 6.50758Z" fill="#FFC107"/>
+                        </g>
+                        <g clip-path="url(#clip3_243_5253)">
+                        <path d="M84.7053 6.50758L79.1117 5.65314L76.6045 0.312761C76.4173 -0.0860244 75.763 -0.0860244 75.5757 0.312761L73.0693 5.65314L67.4757 6.50758C67.0162 6.57808 66.8328 7.13684 67.155 7.46663L71.2186 11.6319L70.2581 17.5204C70.1815 17.9882 70.6811 18.3392 71.0943 18.1095L76.0905 15.3483L81.0867 18.1103C81.4961 18.3377 82.0002 17.9935 81.9229 17.5212L80.9623 11.6326L85.026 7.46739C85.3482 7.13684 85.164 6.57808 84.7053 6.50758Z" fill="#FFC107"/>
+                        </g>
+                        <g clip-path="url(#clip4_243_5253)">
+                        <path d="M109.517 6.50758L103.924 5.65314L101.416 0.312761C101.229 -0.0860244 100.575 -0.0860244 100.388 0.312761L97.8811 5.65314L92.2875 6.50758C91.8281 6.57808 91.6446 7.13684 91.9668 7.46663L96.0305 11.6319L95.0699 17.5204C94.9933 17.9882 95.4929 18.3392 95.9061 18.1095L100.902 15.3483L105.899 18.1103C106.308 18.3377 106.812 17.9935 106.735 17.5212L105.774 11.6326L109.838 7.46739C110.16 7.13684 109.976 6.57808 109.517 6.50758Z" fill="#FFC107"/>
+                        </g>
+                        <defs>
+                        <clipPath id="clip0_243_5253">
+                        <rect width="18.1955" height="18.1955" fill="white"/>
+                        </clipPath>
+                        <clipPath id="clip1_243_5253">
+                        <rect width="18.1955" height="18.1955" fill="white" transform="translate(44.6616)"/>
+                        </clipPath>
+                        <clipPath id="clip2_243_5253">
+                        <rect width="18.1955" height="18.1955" fill="white" transform="translate(22.3307)"/>
+                        </clipPath>
+                        <clipPath id="clip3_243_5253">
+                        <rect width="18.1955" height="18.1955" fill="white" transform="translate(66.9926)"/>
+                        </clipPath>
+                        <clipPath id="clip4_243_5253">
+                        <rect width="18.1955" height="18.1955" fill="white" transform="translate(91.8044)"/>
+                        </clipPath>
+                        </defs>
+                      </svg>
+                    </div>
                   </div>
                 </div>
               {%- endif -%}
-              <div class="multicolumn-card__info">
+              <div class="review__info">
                 {%- if block.settings.title != blank -%}
-                  <h3 class="inline-richtext">{{ block.settings.title }}</h3>
+                  <h3>{{ block.settings.title | escape }}</h3>
                 {%- endif -%}
                 {%- if block.settings.text != blank -%}
                   <div class="rte">{{ block.settings.text }}</div>
@@ -139,6 +153,35 @@
                     <span class="icon-wrap">&nbsp;{% render 'icon-arrow' %}</span></a
                   >
                 {%- endif -%}
+              </div>
+              <div class="review_date_like">
+                <p class="review_date">{{ block.settings.date }}</p>
+                <div>
+                  <span class="like">
+                    <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <g clip-path="url(#clip0_243_5295)">
+                      <path d="M21.0511 14.9565C21.5019 14.3814 21.7182 13.765 21.6906 13.1301C21.663 12.4308 21.3501 11.8833 21.0925 11.5475C21.3915 10.8022 21.5065 9.62902 20.5082 8.71811C19.7767 8.05102 18.5346 7.75199 16.8139 7.8348C15.604 7.89 14.5919 8.11543 14.5505 8.12463H14.5459C14.3158 8.16604 14.072 8.21665 13.8236 8.27185C13.8052 7.97742 13.8558 7.24592 14.3986 5.59891C15.0427 3.63906 15.0059 2.13927 14.279 1.13634C13.5153 0.0828106 12.2962 0 11.9373 0C11.5923 0 11.2749 0.142618 11.0494 0.404851C10.5388 0.998327 10.5986 2.09327 10.663 2.59933C10.0557 4.22794 8.35348 8.22125 6.9135 9.32999C6.8859 9.34839 6.86289 9.37139 6.83989 9.39439C6.41664 9.84065 6.1314 10.3237 5.93818 10.747C5.66674 10.5997 5.3585 10.5169 5.02726 10.5169H2.22091C1.16278 10.5169 0.307068 11.3772 0.307068 12.4308V19.9067C0.307068 20.9649 1.16738 21.8206 2.22091 21.8206H5.02726C5.43671 21.8206 5.81856 21.6918 6.1314 21.4709L7.21254 21.5997C7.37816 21.6228 10.3225 21.9954 13.3451 21.9356C13.8926 21.977 14.4078 22 14.8863 22C15.7098 22 16.4275 21.9356 17.0256 21.8068C18.4334 21.5077 19.3949 20.9097 19.8825 20.0309C20.2552 19.3593 20.2552 18.6922 20.1954 18.2689C21.1109 17.4408 21.2719 16.5253 21.2397 15.8812C21.2213 15.5086 21.1385 15.1911 21.0511 14.9565ZM2.22091 20.5784C1.84826 20.5784 1.54922 20.2748 1.54922 19.9067V12.4262C1.54922 12.0535 1.85286 11.7545 2.22091 11.7545H5.02726C5.39991 11.7545 5.69895 12.0581 5.69895 12.4262V19.9021C5.69895 20.2748 5.39531 20.5738 5.02726 20.5738H2.22091V20.5784ZM19.8733 14.4182C19.6801 14.6207 19.6433 14.9289 19.7905 15.1681C19.7905 15.1727 19.9791 15.4948 20.0022 15.9364C20.0344 16.5391 19.7445 17.0728 19.1372 17.5282C18.921 17.6939 18.8336 17.9791 18.9256 18.2367C18.9256 18.2413 19.1234 18.8486 18.8014 19.4237C18.4932 19.9757 17.8077 20.3714 16.7679 20.5922C15.9352 20.7716 14.8035 20.8038 13.4141 20.6934C13.3957 20.6934 13.3727 20.6934 13.3497 20.6934C10.3915 20.7578 7.40116 20.3714 7.36896 20.3668H7.36436L6.8997 20.3116C6.9273 20.1828 6.9411 20.0448 6.9411 19.9067V12.4262C6.9411 12.2284 6.9089 12.0351 6.85369 11.8557C6.9365 11.5475 7.16653 10.862 7.7094 10.2777C9.77506 8.6399 11.7947 3.1146 11.8821 2.87537C11.9189 2.77875 11.9281 2.67294 11.9097 2.56713C11.8315 2.05186 11.8591 1.42158 11.9695 1.23296C12.2134 1.23756 12.8713 1.30657 13.2669 1.85404C13.7362 2.50272 13.7178 3.66207 13.2117 5.19866C12.4388 7.54036 12.3744 8.77332 12.9863 9.31618C13.2899 9.58762 13.6948 9.60142 13.9892 9.49561C14.2698 9.4312 14.5367 9.37599 14.7897 9.33459C14.8081 9.32999 14.8311 9.32539 14.8495 9.32079C16.2619 9.01255 18.7922 8.82392 19.6709 9.62442C20.4162 10.3053 19.8871 11.207 19.8273 11.3036C19.6571 11.5613 19.7077 11.8971 19.9377 12.1041C19.9423 12.1087 20.4254 12.5642 20.4484 13.1761C20.4668 13.5855 20.2736 14.0042 19.8733 14.4182Z" fill="white"/>
+                      </g>
+                      <defs>
+                      <clipPath id="clip0_243_5295">
+                      <rect width="22" height="22" fill="white"/>
+                      </clipPath>
+                      </defs>
+                    </svg>
+                  </span>
+                  <span class="deslike">
+                    <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <g clip-path="url(#clip0_243_5304)">
+                      <path d="M21.0511 7.0435C21.5019 7.61857 21.7182 8.23505 21.6906 8.86993C21.663 9.56922 21.3501 10.1167 21.0925 10.4525C21.3915 11.1978 21.5065 12.371 20.5082 13.2819C19.7767 13.949 18.5346 14.248 16.8139 14.1652C15.604 14.11 14.5919 13.8846 14.5505 13.8754H14.5459C14.3158 13.834 14.072 13.7834 13.8236 13.7281C13.8052 14.0226 13.8558 14.7541 14.3986 16.4011C15.0427 18.3609 15.0059 19.8607 14.279 20.8637C13.5153 21.9172 12.2962 22 11.9373 22C11.5923 22 11.2749 21.8574 11.0494 21.5951C10.5388 21.0017 10.5986 19.9067 10.663 19.4007C10.0557 17.7721 8.35348 13.7788 6.9135 12.67C6.8859 12.6516 6.86289 12.6286 6.83989 12.6056C6.41664 12.1593 6.1314 11.6763 5.93818 11.253C5.66674 11.4003 5.3585 11.4831 5.02726 11.4831H2.22091C1.16278 11.4831 0.307068 10.6228 0.307068 9.56922V2.09327C0.307068 1.03513 1.16738 0.179424 2.22091 0.179424H5.02726C5.43671 0.179424 5.81856 0.308241 6.1314 0.529068L7.21254 0.400251C7.37816 0.377249 10.3225 0.00460243 13.3451 0.0644093C13.8926 0.0230045 14.4078 0 14.8863 0C15.7098 0 16.4275 0.0644093 17.0256 0.193226C18.4334 0.492264 19.3949 1.09034 19.8825 1.96905C20.2552 2.64074 20.2552 3.30782 20.1954 3.73108C21.1109 4.55918 21.2719 5.4747 21.2397 6.11878C21.2213 6.49143 21.1385 6.80887 21.0511 7.0435ZM2.22091 1.42158C1.84826 1.42158 1.54922 1.72522 1.54922 2.09327V9.57382C1.54922 9.94647 1.85286 10.2455 2.22091 10.2455H5.02726C5.39991 10.2455 5.69895 9.94187 5.69895 9.57382V2.09787C5.69895 1.72522 5.39531 1.42618 5.02726 1.42618H2.22091V1.42158ZM19.8733 7.58177C19.6801 7.37934 19.6433 7.0711 19.7905 6.83187C19.7905 6.82727 19.9791 6.50523 20.0022 6.06357C20.0344 5.4609 19.7445 4.92723 19.1372 4.47177C18.921 4.30615 18.8336 4.02091 18.9256 3.76328C18.9256 3.75868 19.1234 3.1514 18.8014 2.57633C18.4932 2.02426 17.8077 1.62861 16.7679 1.40778C15.9352 1.22836 14.8035 1.19615 13.4141 1.30657C13.3957 1.30657 13.3727 1.30657 13.3497 1.30657C10.3915 1.24216 7.40116 1.62861 7.36896 1.63321H7.36436L6.8997 1.68842C6.9273 1.81723 6.9411 1.95525 6.9411 2.09327V9.57382C6.9411 9.77164 6.9089 9.96487 6.85369 10.1443C6.9365 10.4525 7.16653 11.138 7.7094 11.7223C9.77506 13.3601 11.7947 18.8854 11.8821 19.1246C11.9189 19.2212 11.9281 19.3271 11.9097 19.4329C11.8315 19.9481 11.8591 20.5784 11.9695 20.767C12.2134 20.7624 12.8713 20.6934 13.2669 20.146C13.7362 19.4973 13.7178 18.3379 13.2117 16.8013C12.4388 14.4596 12.3744 13.2267 12.9863 12.6838C13.2899 12.4124 13.6948 12.3986 13.9892 12.5044C14.2698 12.5688 14.5367 12.624 14.7897 12.6654C14.8081 12.67 14.8311 12.6746 14.8495 12.6792C16.2619 12.9875 18.7922 13.1761 19.6709 12.3756C20.4162 11.6947 19.8871 10.793 19.8273 10.6964C19.6571 10.4387 19.7077 10.1029 19.9377 9.89586C19.9423 9.89126 20.4254 9.4358 20.4484 8.82392C20.4668 8.41447 20.2736 7.99582 19.8733 7.58177Z" fill="white"/>
+                      </g>
+                      <defs>
+                      <clipPath id="clip0_243_5304">
+                      <rect width="22" height="22" fill="white" transform="matrix(1 0 0 -1 0 22)"/>
+                      </clipPath>
+                      </defs>
+                    </svg>
+                  </span>
+                </div>
               </div>
             </div>
           </li>
@@ -189,40 +232,132 @@
   </div>
 </div>
 
+<style>
+    .customer-review-title {
+      font-weight: 600;
+      font-size: 44px;
+      line-height: 140%;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+  }
+  .customer_review_cont {
+    max-width: 1350px;
+    margin: 0 auto;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  .multicolumn-card__image-wrapper {
+    display: flex;
+    align-items: center;
+  }
+  .cst_name {
+    display: flex;
+    align-items: center;
+    margin: 0 0 6px 0;
+  }
+  .cst_name p {
+    margin-right: 11px;
+  }
+  .cus_profile {
+    margin-left: 20px;
+  }
+  .review__info {
+    margin: 15px 0 48px 0;
+  }
+  .review_date_like {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .like {
+    margin-right: 20px;
+  }
+  .multicolumn-card.content-container {
+    border: 1px solid #4D4D4D;
+    padding: 25px;
+  }
+  .multicolumn-list__item {
+    margin: 0 20px;
+  }
+  .customer_review_slider .slick-dots {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 50px 0 0 0;
+    padding: 0;
+  }
+
+  .customer_review_slider .slick-dots li button {
+    font-size: 0;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    border: 2px solid #fff;
+  }
+  .customer_review_slider .slick-dots li {
+    list-style: none;
+    margin: 0 0 0 20px;
+  }
+  .customer_review_slider .slick-dots .slick-active button {
+    background: transparent;
+  }
+  @media screen and (max-width: 768px){
+    .customer-review-title {
+      font-size: 22px;
+    }
+  }
+</style>
+
+<script>
+  $('.customer_review_slider').slick({
+    dots: true,
+    arrows: false,
+    infinite: true,
+    speed: 300,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+          infinite: true,
+          dots: true
+        }
+      },
+      {
+        breakpoint: 990,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2
+        }
+      },
+      {
+        breakpoint: 786,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1
+        }
+      }
+      // You can unslick at a given breakpoint now by adding:
+      // settings: "unslick"
+      // instead of a settings object
+    ]
+  });
+</script>
+
 {% schema %}
 {
   "name": "t:sections.multicolumn.name",
   "class": "section",
   "tag": "section",
-  "disabled_on": {
-    "groups": ["header", "footer"]
-  },
   "settings": [
     {
-      "type": "inline_richtext",
+      "type": "text",
       "id": "title",
       "default": "Multicolumn",
       "label": "t:sections.multicolumn.settings.title.label"
-    },
-    {
-      "type": "select",
-      "id": "heading_size",
-      "options": [
-        {
-          "value": "h2",
-          "label": "t:sections.all.heading_size.options__1.label"
-        },
-        {
-          "value": "h1",
-          "label": "t:sections.all.heading_size.options__2.label"
-        },
-        {
-          "value": "h0",
-          "label": "t:sections.all.heading_size.options__3.label"
-        }
-      ],
-      "default": "h1",
-      "label": "t:sections.all.heading_size.label"
     },
     {
       "type": "select",
@@ -321,10 +456,32 @@
       "label": "t:sections.multicolumn.settings.button_link.label"
     },
     {
-      "type": "color_scheme",
+      "type": "select",
       "id": "color_scheme",
-      "label": "t:sections.all.colors.label",
-      "default": "background-1"
+      "options": [
+        {
+          "value": "accent-1",
+          "label": "t:sections.all.colors.accent_1.label"
+        },
+        {
+          "value": "accent-2",
+          "label": "t:sections.all.colors.accent_2.label"
+        },
+        {
+          "value": "background-1",
+          "label": "t:sections.all.colors.background_1.label"
+        },
+        {
+          "value": "background-2",
+          "label": "t:sections.all.colors.background_2.label"
+        },
+        {
+          "value": "inverse",
+          "label": "t:sections.all.colors.inverse.label"
+        }
+      ],
+      "default": "background-1",
+      "label": "t:sections.all.colors.label"
     },
     {
       "type": "header",
@@ -388,10 +545,15 @@
           "label": "t:sections.multicolumn.blocks.column.settings.image.label"
         },
         {
-          "type": "inline_richtext",
+          "type": "text",
           "id": "title",
           "default": "Column",
           "label": "t:sections.multicolumn.blocks.column.settings.title.label"
+        },
+        {
+          "type": "text",
+          "id": "date",
+          "label": "Date"
         },
         {
           "type": "richtext",

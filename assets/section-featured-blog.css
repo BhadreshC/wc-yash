@@ -20,10 +20,6 @@
   position: relative;
 }
 
-.blog-placeholder .placeholder .placeholder-svg {
-  height: auto;
-}
-
 .blog-placeholder h2 {
   margin: 0;
 }
@@ -44,7 +40,9 @@
 }
 
 .blog__posts.articles-wrapper {
-  margin-bottom: 1rem;
+    max-width: 1380px;
+    margin: 0 auto;
+    padding: 0 20px;
 }
 
 @media screen and (min-width: 990px) {
@@ -59,7 +57,7 @@
 
 @media screen and (max-width: 749px) {
   .blog__post.article {
-    width: calc(100% - 3rem - var(--grid-mobile-horizontal-spacing));
+    width: calc(100% - 3rem);
   }
 }
 
@@ -89,3 +87,4 @@
     }
   }
 }
+

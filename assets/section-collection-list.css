@@ -4,9 +4,7 @@
 }
 
 .collection-list-title {
-    margin: 0;
-    color: #001E51;
-    font-size: 36px;
+  margin: 0;
 }
 
 @media screen and (max-width: 749px) {

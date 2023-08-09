@@ -1,9 +1,13 @@
-{{ 'section-rich-text.css' | asset_url | stylesheet_tag }}
+<link rel="stylesheet" href="{{ 'component-rte.css' | asset_url }}" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="{{ 'section-rich-text.css' | asset_url }}" media="print" onload="this.media='all'">
+
+<noscript>{{ 'component-rte.css' | asset_url | stylesheet_tag }}</noscript>
+<noscript>{{ 'section-rich-text.css' | asset_url | stylesheet_tag }}</noscript>
 
 {%- style -%}
   .section-{{ section.id }}-padding {
-    padding-top: {{ section.settings.padding_top | times: 0.50 | round: 0 }}px;
-    padding-bottom: {{ section.settings.padding_bottom }}px;
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
   }
 
   @media screen and (min-width: 750px) {
@@ -15,52 +19,40 @@
 {%- endstyle -%}
 
 <div class="isolate{% unless section.settings.full_width %} page-width{% endunless %}">
-  <div class="rich-text content-container color-{{ section.settings.color_scheme }} gradient{% if section.settings.full_width %} rich-text--full-width content-container--full-width{% endif %} section-{{ section.id }}-padding" style="background-image: url({{ section.settings.bg_img | img_url : 'master' }});">
-    <div class="rich-text__wrapper rich-text__wrapper--{{ section.settings.desktop_content_position }}{% if section.settings.full_width %} page-width{% endif %}">
+  <div class="rich-text content-container color-{{ section.settings.color_scheme }} gradient{% if section.settings.full_width %} rich-text--full-width content-container--full-width{% endif %} section-{{ section.id }}-padding">
+    <img src="{{ section.settings.image | img_url: ''  }}" alt="">
+    <div class="rich-text-content rich-text__wrapper rich-text__wrapper{% if section.settings.full_width %} page-width{% endif %}">
       <div class="rich-text__blocks {{ section.settings.content_alignment }}">
         {%- for block in section.blocks -%}
           {%- case block.type -%}
             {%- when 'heading' -%}
+              <h2 class="rich-text__heading rte {{ block.settings.heading_size }}" {{ block.shopify_attributes }}>
+                {{ block.settings.heading | replace: 'p>', 'span>' }}
+              </h2>
               <h2
-                class="rich-text__heading rte inline-richtext {{ block.settings.heading_size }}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+                class="rich-text__heading mob_heading rte {{ block.settings.heading_size }}"
                 {{ block.shopify_attributes }}
-                {% if settings.animations_reveal_on_scroll %}
-                  data-cascade
-                  style="--animation-order: {{ forloop.index }};"
-                {% endif %}
               >
-                {{ block.settings.heading }}
+                {{ block.settings.mob_heading | replace: 'p>', 'span>' }}
               </h2>
             {%- when 'caption' -%}
               <p
-                class="rich-text__caption {{ block.settings.text_style }} {{ block.settings.text_style }}--{{ block.settings.text_size }}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+                class="rich-text__caption {{ block.settings.text_style }} {{ block.settings.text_style }}--{{ block.settings.text_size }}"
                 {{ block.shopify_attributes }}
-                {% if settings.animations_reveal_on_scroll %}
-                  data-cascade
-                  style="--animation-order: {{ forloop.index }};"
-                {% endif %}
               >
                 {{ block.settings.caption | escape }}
               </p>
             {%- when 'text' -%}
-              <div
-                class="rich-text__text rte{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
-                {{ block.shopify_attributes }}
-                {% if settings.animations_reveal_on_scroll %}
-                  data-cascade
-                  style="--animation-order: {{ forloop.index }};"
-                {% endif %}
-              >
+              <div class="rich-text__text rte" {{ block.shopify_attributes }}>
                 {{ block.settings.text }}
+              </div>
+              <div class="rich-text__text mob_text rte" {{ block.shopify_attributes }}>
+                {{ block.settings.mob_text }}
               </div>
             {%- when 'button' -%}
               <div
-                class="rich-text__buttons{% if block.settings.button_label != blank and block.settings.button_label_2 != blank %} rich-text__buttons--multiple{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+                class="rich-text__buttons{% if block.settings.button_label != blank and block.settings.button_label_2 != blank %} rich-text__buttons--multiple{% endif %}"
                 {{ block.shopify_attributes }}
-                {% if settings.animations_reveal_on_scroll %}
-                  data-cascade
-                  style="--animation-order: {{ forloop.index }};"
-                {% endif %}
               >
                 {%- if block.settings.button_label != blank -%}
                   <a
@@ -88,104 +80,154 @@
                 {%- endif -%}
               </div>
           {%- endcase -%}
-          
         {%- endfor -%}
-        {%- form 'customer', id: 'ContactFooter', class: 'richtext_mail' -%}
-                <input type="hidden" name="contact[tags]" value="newsletter">
-                <div class="richtext-form__field-wrapper">
-                  <div class="field">
-                    <input
-                      id="NewsletterForm--{{ section.id }}"
-                      type="email"
-                      name="contact[email]"
-                      class="field__input"
-                      value="{{ form.email }}"
-                      aria-required="true"
-                      autocorrect="off"
-                      autocapitalize="off"
-                      autocomplete="email"
-                      {% if form.errors %}
-                        autofocus
-                        aria-invalid="true"
-                        aria-describedby="ContactFooter-error"
-                      {% elsif form.posted_successfully? %}
-                        aria-describedby="ContactFooter-success"
-                      {% endif %}
-                      placeholder="{{ 'newsletter.label' | t }}"
-                      required
-                    >
-                    <label class="field__label" for="NewsletterForm--{{ section.id }}">
-                      {{ 'newsletter.label' | t }}
-                    </label>
-                    <button
-                      type="submit"
-                      class="newsletter-form__button field__button"
-                      name="commit"
-                      id="Subscribe"
-                      aria-label="{{ 'newsletter.button_label' | t }}"
-                    >
-                      Subscribe
-                    </button>
-                  </div>
-                  {%- if form.errors -%}
-                    <small class="richtext-form__message form__message" id="ContactFooter-error">
-                      {%- render 'icon-error' -%}
-                      {{- form.errors.translated_fields.email | capitalize }}
-                      {{ form.errors.messages.email -}}
-                    </small>
-                  {%- endif -%}
-                </div>
-                {%- if form.posted_successfully? -%}
-                  <h3
-                    class="richtext-form__message richtext-form__message--success form__message"
-                    id="ContactFooter-success"
-                    tabindex="-1"
-                    autofocus
-                  >
-                    {% render 'icon-success' -%}
-                    {{- 'newsletter.success' | t }}
-                  </h3>
-                {%- endif -%}
-              {%- endform -%}
       </div>
     </div>
   </div>
 </div>
+
+<style>
+      .rich-text-content {
+        position: absolute;
+        transform: translate(-50%, -50%);
+        top: 45%;
+        left: 50%;
+    }
+    .rich-text__heading span {
+      font-weight: 700;
+      font-size: 63px;
+      line-height: 105%;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: #5C2F23;
+    }
+    .rich-text__text p {
+      font-family: 'Rubik' !important;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 19px;
+      line-height: 30px;
+      letter-spacing: 0.05em;
+    }
+    .rich-text__buttons .button {
+      font-family: 'Rubik' !important;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 33px;
+      text-transform: uppercase;
+      background: #000;
+      opacity: 1;
+      padding: 9px 42px;
+    }
+    .template-page-about-us .rich-text__heading span {
+      font-weight: 700;
+      font-size: 60px;
+      line-height: 135.7%;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      color: #FFFFFF;
+    }
+    .template-page-about-us .rich-text__text p {
+      font-weight: 400;
+      font-size: 22px;
+      line-height: 160%;
+      text-align: center;
+      letter-spacing: 0.02em;
+      color: #FFFFFF;
+    }
+    .template-page-about-us .rich-text__blocks {
+      max-width: 1172px;
+    }
+    .template-page-about-us .page-width {
+      max-width: unset;
+    }
+    .rich-text img {
+      width: 100%;
+    }
+    .mob_heading{
+      display: none;
+    }
+    .mob_text{
+      display: none;
+    }
+    @media screen and (max-width: 1440px){
+      .rich-text__heading span {
+      font-size: 48px;
+      line-height: 98%;
+    }
+      .rich-text__text p {
+      font-size: 16px;
+      line-height: 22px;
+    }
+      .template-page-about-us .rich-text__text p {
+      font-size: 16px;
+    }
+      .template-page-about-us .rich-text__heading span {
+      font-size: 48px;
+      line-height: 92.7%;
+    }
+  }
+  @media screen and (max-width: 989px){
+    .rich-text__heading span {
+      font-size: 32px;
+      line-height: 85%;
+    }
+    .rich-text__text p {
+      font-size: 12px;
+      line-height: 18px;
+    }
+    .rich-text__blocks>*+* {
+      margin-top: 1.5rem;
+    }
+    .rich-text__buttons .button {
+      font-size: 12px;
+      padding: 0 42px;
+    }
+    .template-page-about-us .rich-text__text p {
+      font-size: 14px;
+    }
+  }
+  @media screen and (max-width: 768px){
+    .rich-text__heading span {
+      font-size: 22px;
+    }
+    .rich-text__blocks>*+* {
+      margin-top: 5px;
+    }
+    .mob_heading{
+      display: block !important;
+    }
+    .mob_text{
+      display: block !important;
+    }
+    .rich-text__heading {
+      display: none;
+    }
+    .rich-text__text {
+      display: none;
+    }
+    .rich-text img {
+      height: 200px;
+      object-fit: cover;
+    }
+    .template-page-about-us .rich-text__heading span {
+      font-size: 38px;
+    }
+  }
+</style>
 
 {% schema %}
 {
   "name": "t:sections.rich-text.name",
   "tag": "section",
   "class": "section",
-  "disabled_on": {
-    "groups": ["header", "footer"]
-  },
   "settings": [
+
     {
       "type": "image_picker",
-      "id": "bg_img",
-      "label": "Background Image"
-    },
-    {
-      "type": "select",
-      "id": "desktop_content_position",
-      "options": [
-        {
-          "value": "left",
-          "label": "t:sections.rich-text.settings.desktop_content_position.options__1.label"
-        },
-        {
-          "value": "center",
-          "label": "t:sections.rich-text.settings.desktop_content_position.options__2.label"
-        },
-        {
-          "value": "right",
-          "label": "t:sections.rich-text.settings.desktop_content_position.options__3.label"
-        }
-      ],
-      "default": "center",
-      "label": "t:sections.rich-text.settings.desktop_content_position.label",
-      "info": "t:sections.rich-text.settings.desktop_content_position.info"
+      "id": "image",
+      "label": "image"
     },
     {
       "type": "select",
@@ -208,10 +250,32 @@
       "label": "t:sections.rich-text.settings.content_alignment.label"
     },
     {
-      "type": "color_scheme",
+      "type": "select",
       "id": "color_scheme",
-      "label": "t:sections.all.colors.label",
-      "default": "background-1"
+      "options": [
+        {
+          "value": "accent-1",
+          "label": "t:sections.all.colors.accent_1.label"
+        },
+        {
+          "value": "accent-2",
+          "label": "t:sections.all.colors.accent_2.label"
+        },
+        {
+          "value": "background-1",
+          "label": "t:sections.all.colors.background_1.label"
+        },
+        {
+          "value": "background-2",
+          "label": "t:sections.all.colors.background_2.label"
+        },
+        {
+          "value": "inverse",
+          "label": "t:sections.all.colors.inverse.label"
+        }
+      ],
+      "default": "background-1",
+      "label": "t:sections.all.colors.label"
     },
     {
       "type": "checkbox",
@@ -251,35 +315,17 @@
       "limit": 3,
       "settings": [
         {
-          "type": "inline_richtext",
+          "type": "richtext",
           "id": "heading",
-          "default": "Talk about your brand",
+          "default": "<p>Talk about your brand</p>",
           "label": "t:sections.rich-text.blocks.heading.settings.heading.label"
         },
         {
-          "type": "select",
-          "id": "heading_size",
-          "options": [
-            {
-              "value": "h2",
-              "label": "t:sections.all.heading_size.options__1.label"
-            },
-            {
-              "value": "h1",
-              "label": "t:sections.all.heading_size.options__2.label"
-            },
-            {
-              "value": "h0",
-              "label": "t:sections.all.heading_size.options__3.label"
-            },
-            {
-              "value": "hxl",
-              "label": "t:sections.all.heading_size.options__4.label"
-            }
-          ],
-          "default": "h1",
-          "label": "t:sections.all.heading_size.label"
+          "type": "richtext",
+          "id": "mob_heading",
+          "label": "mob_title"
         }
+
       ]
     },
     {
@@ -341,6 +387,11 @@
           "id": "text",
           "default": "<p>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.</p>",
           "label": "t:sections.rich-text.blocks.text.settings.text.label"
+        },
+        {
+          "type": "richtext",
+          "id": "mob_text",
+          "label": "mob text"
         }
       ]
     },

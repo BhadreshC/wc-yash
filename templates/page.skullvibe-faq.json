@@ -1,0 +1,104 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "image": "shopify:\/\/shop_images\/Rectangle_552_2.png",
+        "heading_desc": "Home     >     FAQ",
+        "heading": "DON'T STAY IN THE DARK",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "703ef0d8-bda1-4917-ab68-dcb0b861ef2f": {
+      "type": "image-banner",
+      "blocks": {
+        "template--16029600546975__703ef0d8-bda1-4917-ab68-dcb0b861ef2f-16746459992081f7f3-0": {
+          "type": "heading",
+          "settings": {
+            "banner_desc": "Home    &gt;    FAQ",
+            "heading": "DON'T STAY IN THE DARK",
+            "heading_size": "h1"
+          }
+        },
+        "template--16029600546975__703ef0d8-bda1-4917-ab68-dcb0b861ef2f-16746459992081f7f3-1": {
+          "type": "text",
+          "settings": {
+            "text": "",
+            "text_style": "body"
+          }
+        },
+        "template--16029600546975__703ef0d8-bda1-4917-ab68-dcb0b861ef2f-16746459992081f7f3-2": {
+          "type": "buttons",
+          "settings": {
+            "button_label_1": "",
+            "button_link_1": "",
+            "button_style_secondary_1": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "template--16029600546975__703ef0d8-bda1-4917-ab68-dcb0b861ef2f-16746459992081f7f3-0",
+        "template--16029600546975__703ef0d8-bda1-4917-ab68-dcb0b861ef2f-16746459992081f7f3-1",
+        "template--16029600546975__703ef0d8-bda1-4917-ab68-dcb0b861ef2f-16746459992081f7f3-2"
+      ],
+      "settings": {
+        "image": "shopify:\/\/shop_images\/Rectangle_552_2.png",
+        "image_overlay_opacity": 0,
+        "image_height": "medium",
+        "adapt_height_first_image": false,
+        "desktop_content_position": "bottom-right",
+        "show_text_box": true,
+        "desktop_content_alignment": "center",
+        "color_scheme": "background-1",
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": true,
+        "show_text_below": true
+      }
+    },
+    "5e06f648-9852-4ddf-aa99-fa1993aa5f49": {
+      "type": "tab-accordion",
+      "blocks": {
+        "aec43f23-6d84-4cc7-9ecf-90a141988b70": {
+          "type": "payments",
+          "settings": {
+            "accordion-title": "Can i pay without a Paypal account?",
+            "description": "<p>Our policy lasts 30 days. If 30 days have gone by since your purchase, unfortunately, we can’t offer you a refund or exchange.<\/p>"
+          }
+        },
+        "6f3ef7cf-2ec0-4b28-8f5d-1a84cd4f34c3": {
+          "type": "payments",
+          "settings": {
+            "accordion-title": "How Can I Pay For My Order?",
+            "description": "<p>Our policy lasts 30 days. If 30 days have gone by since your purchase, unfortunately, we can’t offer you a refund or exchange.<\/p>"
+          }
+        },
+        "5abda9fe-f01a-4801-a06b-c0fbc7a5c3f6": {
+          "type": "payments",
+          "settings": {
+            "accordion-title": "What Currency Is Displayed On The Website?",
+            "description": "<p>Our policy lasts 30 days. If 30 days have gone by since your purchase, unfortunately, we can’t offer you a refund or exchange.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "aec43f23-6d84-4cc7-9ecf-90a141988b70",
+        "6f3ef7cf-2ec0-4b28-8f5d-1a84cd4f34c3",
+        "5abda9fe-f01a-4801-a06b-c0fbc7a5c3f6"
+      ],
+      "settings": {
+        "padding_top": 100,
+        "padding_bottom": 36
+      }
+    }
+  },
+  "order": [
+    "main",
+    "703ef0d8-bda1-4917-ab68-dcb0b861ef2f",
+    "5e06f648-9852-4ddf-aa99-fa1993aa5f49"
+  ]
+}

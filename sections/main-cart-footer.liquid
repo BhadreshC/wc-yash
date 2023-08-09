@@ -3,23 +3,15 @@
 {{ 'component-price.css' | asset_url | stylesheet_tag }}
 {{ 'component-discounts.css' | asset_url | stylesheet_tag }}
 
-<div class="main-cart_footer{% if cart == empty %} is-empty{% endif %}" id="main-cart-footer" data-id="{{ section.id }}">
+<div class="page-width{% if cart == empty %} is-empty{% endif %}" id="main-cart-footer" data-id="{{ section.id }}">
   <div>
     <div class="cart__footer">
-     {% comment %} 
       {%- if settings.show_cart_note -%}
         <cart-note class="cart__note field">
           <label for="Cart-note">{{ 'sections.cart.note' | t }}</label>
-          <textarea
-            class="text-area field__input"
-            name="note"
-            form="cart"
-            id="Cart-note"
-            placeholder="{{ 'sections.cart.note' | t }}"
-          >{{ cart.note }}</textarea>
+          <textarea class="text-area field__input" name="note" form="cart" id="Cart-note" placeholder="{{ 'sections.cart.note' | t }}">{{ cart.note }}</textarea>
         </cart-note>
       {%- endif -%}
-     {% endcomment %} 
 
       <div class="cart__blocks">
         {% for block in section.blocks %}
@@ -31,10 +23,6 @@
                 <div class="totals">
                   <h2 class="totals__subtotal">{{ 'sections.cart.subtotal' | t }}</h2>
                   <p class="totals__subtotal-value">{{ cart.total_price | money_with_currency }}</p>
-                </div>
-                <div class="sub_totals">
-                  <h2 class="total-subtotal">{{ 'sections.cart.subtotal' | t }}</h2>
-                  <p class="totals-subtotal-value">{{ cart.total_price | money_with_currency }}</p>
                 </div>
 
                 <div>
@@ -51,36 +39,6 @@
                   {%- endif -%}
                 </div>
 
-            {% unless customer.tags contains 'Member price' or customer.tags contains 'eaamember' or customer.tags contains 'board' or customer.tags contains 'staff' %}            
-              <a href="{{ settings.login_link }}" class="member-discount {% comment %}show-membership_product{% endcomment %}">
-                {% assign discount_amtt = discount_val | round %}
-                {% assign discount_title = settings.member_dis_tagtext | replace: '[[amount]]', discount_amtt %}
-                 {{ settings.footer_dis_text }}
-                <div class="member-discount_tag">{{ settings.member_dis_tag }}<span>{{ discount_title }}</span></div>
-              </a> 
-            {% endunless %}
-
-                <div class="cart__ctas" {{ block.shopify_attributes }}>
-                  <noscript>
-                    <button type="submit" class="cart__update-button button button--secondary" form="cart">
-                      {{ 'sections.cart.update' | t }}
-                    </button>
-                  </noscript>
-  
-                  <button
-                    type="submit"
-                    id="checkout"
-                    class="add_to-cart cart__checkout-button button"
-                    name="checkout"
-                    {% if cart == empty %}
-                      disabled
-                    {% endif %}
-                    form="cart"
-                  >
-                    {{ 'sections.cart.checkout' | t }}
-                  </button>
-              </div>
-
                 <small class="tax-note caption-large rte">
                   {%- if cart.taxes_included and shop.shipping_policy.body != blank -%}
                     {{ 'sections.cart.taxes_included_and_shipping_policy_html' | t: link: shop.shipping_policy.url }}
@@ -94,7 +52,6 @@
                 </small>
               </div>
             {%- else -%}
-            {% comment %}
               <div class="cart__ctas" {{ block.shopify_attributes }}>
                 <noscript>
                   <button type="submit" class="cart__update-button button button--secondary" form="cart">
@@ -102,20 +59,10 @@
                   </button>
                 </noscript>
 
-                <button
-                  type="submit"
-                  id="checkout"
-                  class="cart__checkout-button button"
-                  name="checkout"
-                  {% if cart == empty %}
-                    disabled
-                  {% endif %}
-                  form="cart"
-                >
+                <button type="submit" id="checkout" class="cart__checkout-button button" name="checkout"{% if cart == empty %} disabled{% endif %} form="cart">
                   {{ 'sections.cart.checkout' | t }}
                 </button>
               </div>
-              {% endcomment %}
 
               {%- if additional_checkout_buttons -%}
                 <div class="cart__dynamic-checkout-buttons additional-checkout-buttons">
@@ -132,13 +79,13 @@
 </div>
 
 <script>
-  document.addEventListener('DOMContentLoaded', function () {
+  document.addEventListener('DOMContentLoaded', function() {
     function isIE() {
       const ua = window.navigator.userAgent;
       const msie = ua.indexOf('MSIE ');
       const trident = ua.indexOf('Trident/');
 
-      return msie > 0 || trident > 0;
+      return (msie > 0 || trident > 0);
     }
 
     if (!isIE()) return;
@@ -146,7 +93,7 @@
     cartSubmitInput.setAttribute('name', 'checkout');
     cartSubmitInput.setAttribute('type', 'hidden');
     document.querySelector('#cart').appendChild(cartSubmitInput);
-    document.querySelector('#checkout').addEventListener('click', function (event) {
+    document.querySelector('#checkout').addEventListener('click', function(event) {
       document.querySelector('#cart').submit();
     });
   });

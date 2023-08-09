@@ -2,8 +2,8 @@
 
 {%- style -%}
   .section-{{ section.id }}-padding {
-    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
-    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+    padding-top: {{ section.settings.padding_top | times: 0.50 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.50 | round: 0 }}px;
   }
 
   @media screen and (min-width: 750px) {
@@ -14,22 +14,16 @@
   }
 {%- endstyle -%}
 
-<div class="color-{{ section.settings.color_scheme }} gradient">
-  <div class="contact page-width page-width--narrow section-{{ section.id }}-padding">
+<div class="color-{{ section.settings.color_scheme }} contact-box-container contact_shop_details gradient">
+  <div class="contact   section-{{ section.id }}-padding">
     {%- if section.settings.heading != blank -%}
-      <h2 class="title title-wrapper--no-top-margin inline-richtext {{ section.settings.heading_size }}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
-        {{ section.settings.heading }}
+      <h2 class="title title-wrapper--no-top-margin {{ section.settings.heading_size }}">
+        {{ section.settings.heading | escape }}
       </h2>
     {%- else -%}
       <h2 class="visually-hidden">{{ 'templates.contact.form.title' | t }}</h2>
     {%- endif -%}
-    {%- liquid
-      assign contact_form_class = 'isolate'
-      if settings.animations_reveal_on_scroll
-        assign contact_form_class = 'isolate scroll-trigger animate--slide-in'
-      endif
-    -%}
-    {%- form 'contact', id: 'ContactForm', class: contact_form_class -%}
+    {%- form 'contact', id: 'ContactForm', class: 'isolate' -%}
       {%- if form.posted_successfully? -%}
         <h2 class="form-status form-status-list form__message" tabindex="-1" autofocus>
           {% render 'icon-success' %}
@@ -51,51 +45,49 @@
           </li>
         </ul>
       {%- endif -%}
-      <div class="contact__fields">
-        <div class="field">
-          <input
-            class="field__input"
-            autocomplete="name"
-            type="text"
-            id="ContactForm-name"
-            name="contact[{{ 'templates.contact.form.name' | t }}]"
-            value="{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.name }}{% endif %}"
-            placeholder="{{ 'templates.contact.form.name' | t }}"
-          >
-          <label class="field__label" for="ContactForm-name">{{ 'templates.contact.form.name' | t }}</label>
-        </div>
-        <div class="field field--with-error">
-          <input
-            autocomplete="email"
-            type="email"
-            id="ContactForm-email"
-            class="field__input"
-            name="contact[email]"
-            spellcheck="false"
-            autocapitalize="off"
-            value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}"
-            aria-required="true"
-            {% if form.errors contains 'email' %}
-              aria-invalid="true"
-              aria-describedby="ContactForm-email-error"
-            {% endif %}
-            placeholder="{{ 'templates.contact.form.email' | t }}"
-          >
-          <label class="field__label" for="ContactForm-email">
-            {{- 'templates.contact.form.email' | t }}
-            <span aria-hidden="true">*</span></label
-          >
-          {%- if form.errors contains 'email' -%}
-            <small class="contact__field-error" id="ContactForm-email-error">
-              <span class="visually-hidden">{{ 'accessibility.error' | t }}</span>
-              <span class="form__message">
-                {%- render 'icon-error' -%}
-                {{- form.errors.translated_fields.email | capitalize }}
-                {{ form.errors.messages.email -}}
-              </span>
-            </small>
-          {%- endif -%}
-        </div>
+      <div class="field">
+        <input
+          class="field__input"
+          autocomplete="name"
+          type="text"
+          id="ContactForm-name"
+          name="contact[{{ 'templates.contact.form.name' | t }}]"
+          value="{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.name }}{% endif %}"
+          placeholder="{{ 'templates.contact.form.name' | t }}"
+        >
+        <label class="field__label" for="ContactForm-name">{{ 'templates.contact.form.name' | t }}</label>
+      </div>
+      <div class="field field--with-error">
+        <input
+          autocomplete="email"
+          type="email"
+          id="ContactForm-email"
+          class="field__input"
+          name="contact[email]"
+          spellcheck="false"
+          autocapitalize="off"
+          value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}"
+          aria-required="true"
+          {% if form.errors contains 'email' %}
+            aria-invalid="true"
+            aria-describedby="ContactForm-email-error"
+          {% endif %}
+          placeholder="{{ 'templates.contact.form.email' | t }}"
+        >
+        <label class="field__label" for="ContactForm-email">
+          {{- 'templates.contact.form.email' | t }}
+          <span aria-hidden="true">*</span></label
+        >
+        {%- if form.errors contains 'email' -%}
+          <small class="contact__field-error" id="ContactForm-email-error">
+            <span class="visually-hidden">{{ 'accessibility.error' | t }}</span>
+            <span class="form__message">
+              {%- render 'icon-error' -%}
+              {{- form.errors.translated_fields.email | capitalize }}
+              {{ form.errors.messages.email -}}
+            </span>
+          </small>
+        {%- endif -%}
       </div>
       <div class="field">
         <input
@@ -126,24 +118,154 @@
       </div>
       <div class="contact__button">
         <button type="submit" class="button">
-          {{ 'templates.contact.form.send' | t }}
+          {{ 'customer.login_page.submit' | t }}
         </button>
       </div>
     {%- endform -%}
   </div>
+  <div class="shop_details">
+    {% for block in section.blocks %}
+      <div class="contact_detail">
+        <div class="shop_time">
+          <div class="shop_img">
+            {{ block.settings.shop_svg }}
+          </div>
+          <p class="shop_desc_title">{{ block.settings.shop_des_title }}</p>
+        </div>
+        <div class="shop_detail_desc">{{ block.settings.shop_detail_desc }}</div>
+      </div>
+    {% endfor %}
+  </div>
 </div>
+
+<style>
+    .contact-box-container {
+      max-width: 1176px;
+      margin: 0 auto;
+      padding: 0 20px;
+  }
+  .contact__button .button {
+    background: #C6A669;
+    border-radius: 5px;
+    box-shadow: none;
+    padding: 21px 78px;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 26px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .contact__button .button:after{
+    box-shadow: none;
+  }
+  .contact {
+    width: 700px;
+  }
+  .shop_details {
+    width: 246px;
+  }
+  .contact_shop_details {
+    display: flex;
+    justify-content: space-between;
+  }
+  .shop_time {
+    display: flex;
+    align-items: center;
+  }
+  .shop_desc_title {
+    margin: 0 0 0 10px;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 135.7%;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    color: #C38F56;
+  }
+  .shop_detail_desc p {
+    margin: 0px 0 41px 0;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: 0.05em;
+  }
+  .shop_detail_desc h4 {
+    margin: 10px 0;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 26px;
+    letter-spacing: 0.02em;
+  }
+  .shop_img h5 {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 135.7%;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin: 0 0 15px 0;
+  }
+  .shop_detail_desc div span {
+    margin-right: 15px;
+  }
+  @media screen and (max-width: 1024px){
+    .title-text__heading span {
+      font-size: 38px;
+      line-height: 48px;
+    }
+    .title-text__text p {
+      font-size: 16px;
+      line-height: 28px;
+    }
+    .contact {
+      width: 625px;
+    }
+  }
+  @media screen and (max-width: 989px){
+    .contact {
+      width: 100%;
+    }
+    .contact_shop_details {
+      display: block;
+    }
+    .shop_details {
+      width: unset;
+      display: flex;
+      flex-wrap: wrap;
+    }
+    .contact_detail {
+      width: 50%;
+    }
+  }
+  @media screen and (max-width: 749px){
+    .title-text__heading span {
+      font-size: 32px;
+    }
+    .title-text__text p {
+      font-size: 13px;
+      line-height: 22px;
+    }
+    .contact__button .button {
+      padding: 14px 60px;
+      font-size: 16px;
+      line-height: 22px;
+    }
+    .shop_details {
+      display: block;
+    }
+    .contact_detail {
+      width: 100%;
+    }
+   
+  }
+</style>
 
 {% schema %}
 {
   "name": "t:sections.contact-form.name",
   "tag": "section",
   "class": "section",
-  "disabled_on": {
-    "groups": ["header", "footer"]
-  },
   "settings": [
     {
-      "type": "inline_richtext",
+      "type": "text",
       "id": "heading",
       "default": "Contact form",
       "label": "Heading"
@@ -169,10 +291,32 @@
       "label": "t:sections.all.heading_size.label"
     },
     {
-      "type": "color_scheme",
+      "type": "select",
       "id": "color_scheme",
-      "label": "t:sections.all.colors.label",
-      "default": "background-1"
+      "options": [
+        {
+          "value": "accent-1",
+          "label": "t:sections.all.colors.accent_1.label"
+        },
+        {
+          "value": "accent-2",
+          "label": "t:sections.all.colors.accent_2.label"
+        },
+        {
+          "value": "background-1",
+          "label": "t:sections.all.colors.background_1.label"
+        },
+        {
+          "value": "background-2",
+          "label": "t:sections.all.colors.background_2.label"
+        },
+        {
+          "value": "inverse",
+          "label": "t:sections.all.colors.inverse.label"
+        }
+      ],
+      "default": "background-1",
+      "label": "t:sections.all.colors.label"
     },
     {
       "type": "header",
@@ -197,6 +341,29 @@
       "unit": "px",
       "label": "t:sections.all.padding.padding_bottom",
       "default": 36
+    }
+  ],
+  "blocks": [
+    {
+      "type": "shop_desc",
+      "name": "add shop details",
+      "settings": [
+        {
+          "type": "html",
+          "id": "shop_svg",
+          "label": "svg logo"
+        },
+        {
+          "type": "text",
+          "id": "shop_des_title",
+          "label": "title"
+        },
+        {
+          "type": "html",
+          "id": "shop_detail_desc",
+          "label": "description"
+        }
+      ]
     }
   ],
   "presets": [

@@ -1,31 +1,22 @@
-<div class="product-accordion">
-  <h4 class="product-title animatable fadeIn ">{{ section.settings.heading }}</h4>
+<section class="faq-accordion">
+  <h4 class="faq-title">{{ section.settings.heading }}</h4>
   <div class="container">
-    <div class="product-questions">
+    <div class="kadha-questions">
       <div class="accordion-container">
         {% for block in section.blocks %}
-          <div class="accordion animatable fadeIn">
+          <div class="accordion">
             {% if forloop.first == true %}
-              <div class="accordion-head  active">
-                <p>{{ block.settings.accordion-title }}</p>
-                <svg width="16" height="14" viewBox="0 0 16 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M8 10.1213L14 3.62134" stroke="#001E51" stroke-width="1.25" stroke-linecap="square"/>
-                  <path d="M8 10.1213L2 3.62134" stroke="#001E51" stroke-width="1.25" stroke-linecap="square"/>
-                </svg>
-
+              <div class="accordion-head active">
+                <p>{{ block.settings['accordion-title'] }}</p>
               </div>
-              <div class="accordion-content accordion-content-{{ section.id }}">
+              <div class="accordion-content">
                 {{ block.settings.description }}
               </div>
             {% else %}
-              <div class="accordion-head ">
-                <p>{{ block.settings.accordion-title }}</p>
-                <svg width="16" height="14" viewBox="0 0 16 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M8 10.1213L14 3.62134" stroke="#001E51" stroke-width="1.25" stroke-linecap="square"/>
-                  <path d="M8 10.1213L2 3.62134" stroke="#001E51" stroke-width="1.25" stroke-linecap="square"/>
-                </svg>
+              <div class="accordion-head">
+                <p>{{ block.settings['accordion-title'] }}</p>
               </div>
-              <div class="accordion-content accordion-content-{{ section.id }}">
+              <div class="accordion-content">
                 {{ block.settings.description }}
               </div>
             {% endif %}
@@ -34,12 +25,11 @@
       </div>
     </div>
   </div>
-</div>
+</section>
 
 <script>
   $(document).ready(function(){
        $('.accordion-container .accordion:nth-child(1) .accordion-head').addClass('active');
-        $('.accordion-container .accordion .accordion-content').slideUp();
         $('.accordion-container .accordion:nth-child(1) .accordion-content').slideDown();
         $('.accordion-head').on('click', function() {
            if($(this).hasClass('active')) {
@@ -52,64 +42,146 @@
            $(this).siblings('.accordion-content').slideToggle();
            $(this).toggleClass('active');
         }
-     })
   });
+    })
 </script>
 
 <style>
-  .product-accordion{
-  padding-top:{{section.settings.padding_top}}px;
-  padding-bottom:{{section.settings.padding_bottom}}px;
-}
-  .accordion-head p {
-    font-size: 20px;
-    color: #001E51;
-    font-weight: 700;
-    margin: 24px 0 16px;
-}
-  .accordion-content {
-    font-size: 15px;
-    color: #211E1E;
-    margin-bottom: 25px;
-}
-  .accordion-head {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-  .accordion-head.active svg {
-    transform: rotate(180deg);
+  .faq-accordion{
+    padding-top: {{ section.settings.padding_top}}px;
+    padding-bottom: {{ section.settings.padding_bottom}}px;
+  }
+   .faq-accordion .container {
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 0 20px;
+  }
+  .faq-accordion {
+    background: #f9f9f9;
+  }
+   .faq-title {
+    text-align: center;
+    margin: 0 0 30px 0;
+    font-weight: 500;
+    font-size: 40px;
+    line-height: 160%;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: #161616;
+  }
+   .accordion {
+      margin-bottom: 10px;
+    padding: 0 45px;
+  }
+    .accordion-head {
+      padding: 30px 0;
+      position: relative;
+      cursor: pointer;
+      font-weight: 500;
+      font-size: 25px;
+      line-height: 37px;
+      letter-spacing: 0.02em;
+  }
+    .accordion-content p {
+      font-weight: 400;
+      font-size: 22px;
+      letter-spacing: 0.02em;
+      color: #616161;
+      line-height: 36px;
+      margin: 0;
+      font-family: Heebo,sans-serif!important;
+  }
+    .accordion-head::before, .accordion-head::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      background-color: #000;
+      transition: all .3s;
+  }
+  .accordion-head::before {
+      right: 10px;
+      width: 2px;
+      height: 22px;
+      margin-top: -10px;
+  }
+    .accordion-head.active::before {
+      transform: rotate(90deg);
+  }
+   .accordion-head::after {
+      right: 0;
+      width: 22px;
+      height: 1px;
+      margin-top: 0;
+  }
+    .accordion-content {
+      padding: 0 0 30px 0;
+      display: none;
+  }
+    .accordion-head p {
+      margin: 0;
+  }
+  @media screen and (max-width:749px){
+    .faq-title {
+      font-size: 28px;
+      line-height: 110%;
+  }
+    .accordion-head {
+      font-size: 18px;
+      line-height: 24px;
+      padding: 20px 0;
+  }
+    .accordion-content p {
+      font-size: 14px;
+      line-height: 26px;
+  }
+    .accordion {
+      margin-bottom: 0px;
+      padding: 0;
+  }
+    .accordion-head::before {
+      height: 18px;
+      margin-top: -8px;
+  }
+    .accordion-head::after {
+      right: 2px;
+      width: 18px;
+  }
+    .faq-accordion{
+    padding-top: {{ section.settings.padding_top | divided_by: 2}}px;
+    padding-bottom: {{ section.settings.padding_bottom | divided_by: 2}}px;
+  }
 }
 </style>
 
 {% schema %}
 {
-  "name": "product Accordion",
+  "name": "Accordion",
   "settings": [
     {
       "type": "text",
       "id": "heading",
+      "default": "FAQ",
       "label": "Title"
     },
     {
       "type": "range",
       "id": "padding_top",
       "min": 0,
-      "max": 200,
-      "step": 2,
+      "max": 100,
+      "step": 4,
       "unit": "px",
       "label": "t:sections.all.padding.padding_top",
-      "default": 134
+      "default": 36
     },
     {
       "type": "range",
       "id": "padding_bottom",
       "min": 0,
-      "max": 200,
-      "step": 2,
+      "max": 100,
+      "step": 4,
       "unit": "px",
       "label": "t:sections.all.padding.padding_bottom",
-      "default": 160
+      "default": 36
     }
   ],
   "blocks": [
@@ -120,11 +192,13 @@
        {
          "type": "text",
          "id": "accordion-title",
+         "default": "What is a Kadha?",
          "label": "Accordion Title"
        },
        {
-         "type": "html",
+         "type": "richtext",
          "id": "description",
+         "default": " <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore magnam, nobis consequuntur nemo cupiditate vel sit ducimus quisquam quaerat sint officia ad voluptas consectetur beatae quis illo accusamus vero odit, architecto et.</p>",
          "label": "Description"
        }
      ]
@@ -132,14 +206,8 @@
   ],
   "presets":[
     {
-      "name": "product accordion"
+      "name": "accordion"
     }
   ]
 }
 {% endschema %}
-
-{% stylesheet %}
-{% endstylesheet %}
-
-{% javascript %}
-{% endjavascript %}

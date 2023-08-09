@@ -1,0 +1,295 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "heading_desc": "",
+        "heading": "",
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "ba24945d-0db4-4f1a-b69f-a0003d69ce75": {
+      "type": "image-banner",
+      "blocks": {
+        "template--16037387010207__ba24945d-0db4-4f1a-b69f-a0003d69ce75-16744539380ffb1939-0": {
+          "type": "heading",
+          "settings": {
+            "banner_desc": "Home        About us",
+            "heading": "About \nthe skullvibe",
+            "heading_size": "h1"
+          }
+        },
+        "template--16037387010207__ba24945d-0db4-4f1a-b69f-a0003d69ce75-16744539380ffb1939-1": {
+          "type": "text",
+          "settings": {
+            "text": "",
+            "text_style": "body"
+          }
+        },
+        "template--16037387010207__ba24945d-0db4-4f1a-b69f-a0003d69ce75-16744539380ffb1939-2": {
+          "type": "buttons",
+          "settings": {
+            "button_label_1": "",
+            "button_link_1": "",
+            "button_style_secondary_1": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "template--16037387010207__ba24945d-0db4-4f1a-b69f-a0003d69ce75-16744539380ffb1939-0",
+        "template--16037387010207__ba24945d-0db4-4f1a-b69f-a0003d69ce75-16744539380ffb1939-1",
+        "template--16037387010207__ba24945d-0db4-4f1a-b69f-a0003d69ce75-16744539380ffb1939-2"
+      ],
+      "settings": {
+        "image": "shopify:\/\/shop_images\/Rectangle_552_1.png",
+        "image_overlay_opacity": 0,
+        "image_height": "medium",
+        "adapt_height_first_image": false,
+        "desktop_content_position": "bottom-left",
+        "show_text_box": true,
+        "desktop_content_alignment": "center",
+        "color_scheme": "background-1",
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": true,
+        "show_text_below": true
+      }
+    },
+    "caeee745-37eb-496a-95da-a231bd7e0c79": {
+      "type": "image-with-text",
+      "blocks": {
+        "template--16037387010207__caeee745-37eb-496a-95da-a231bd7e0c79-1674455511f4a30aca-0": {
+          "type": "heading",
+          "settings": {
+            "heading": "SAtisfaction 100% guarantee",
+            "heading_size": "h1"
+          }
+        },
+        "template--16037387010207__caeee745-37eb-496a-95da-a231bd7e0c79-1674455511f4a30aca-1": {
+          "type": "text",
+          "settings": {
+            "text": "<p>There is nothing really like finding a cool and awesome sturdy gear that feels like it was made for you. SkullVibe.com is the home of high-quality tactical gear. Our products are for the active ones out there, for the doers, for the leaders, the motivators, the ones who won’t stop chasing the next adventure and want a reliable equipment to accompany them.<\/p>",
+            "text_style": "body"
+          }
+        },
+        "template--16037387010207__caeee745-37eb-496a-95da-a231bd7e0c79-1674455511f4a30aca-2": {
+          "type": "button",
+          "settings": {
+            "button_label": "",
+            "button_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "template--16037387010207__caeee745-37eb-496a-95da-a231bd7e0c79-1674455511f4a30aca-0",
+        "template--16037387010207__caeee745-37eb-496a-95da-a231bd7e0c79-1674455511f4a30aca-1",
+        "template--16037387010207__caeee745-37eb-496a-95da-a231bd7e0c79-1674455511f4a30aca-2"
+      ],
+      "settings": {
+        "image": "shopify:\/\/shop_images\/Rectangle_579.png",
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "text_first",
+        "desktop_content_alignment": "left",
+        "content_layout": "no-overlap",
+        "color_scheme": "background-1",
+        "mobile_content_alignment": "left",
+        "padding_top": 100,
+        "padding_bottom": 100
+      }
+    },
+    "4b8ec26c-74ba-4bd8-8237-4fbe0232c379": {
+      "type": "rich-text",
+      "blocks": {
+        "template--16037387010207__4b8ec26c-74ba-4bd8-8237-4fbe0232c379-167445659994961cb2-0": {
+          "type": "heading",
+          "settings": {
+            "heading": "<p>Our mission<\/p>",
+            "mob_heading": "<p>Our mission<\/p>"
+          }
+        },
+        "template--16037387010207__4b8ec26c-74ba-4bd8-8237-4fbe0232c379-167445659994961cb2-1": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cursus quam pretium in eros. Nullam sed ut eget sed. <br\/>Quam ac ac leo iaculis mattis euismod lobortis varius. Erat interdum laoreet vel tempor, risus, auctor. <br\/>Molestie erat non molestie netus dui porttitor. Penatibus facilisis viverra egestas quisque.<\/p>",
+            "mob_text": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cursus quam pretium in eros. Nullam sed ut eget sed. <\/p>"
+          }
+        },
+        "template--16037387010207__4b8ec26c-74ba-4bd8-8237-4fbe0232c379-167445659994961cb2-2": {
+          "type": "button",
+          "settings": {
+            "button_label": "",
+            "button_link": "",
+            "button_style_secondary": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "template--16037387010207__4b8ec26c-74ba-4bd8-8237-4fbe0232c379-167445659994961cb2-0",
+        "template--16037387010207__4b8ec26c-74ba-4bd8-8237-4fbe0232c379-167445659994961cb2-1",
+        "template--16037387010207__4b8ec26c-74ba-4bd8-8237-4fbe0232c379-167445659994961cb2-2"
+      ],
+      "settings": {
+        "image": "shopify:\/\/shop_images\/Group_4883.png",
+        "content_alignment": "center",
+        "color_scheme": "background-1",
+        "full_width": true,
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "3997bac8-ebb8-4b9d-8be3-f94c4743a380": {
+      "type": "image-with-text",
+      "blocks": {
+        "template--16037387010207__3997bac8-ebb8-4b9d-8be3-f94c4743a380-1674455511f4a30aca-0": {
+          "type": "heading",
+          "settings": {
+            "heading": "Message from the skullvibe",
+            "heading_size": "h1"
+          }
+        },
+        "template--16037387010207__3997bac8-ebb8-4b9d-8be3-f94c4743a380-1674455511f4a30aca-1": {
+          "type": "text",
+          "settings": {
+            "text": "<p>With the utmost dedication, we select everything with our customer in mind, and we provide the highest quality products and accompanying services, from packing to delivering them to your door. Our LLC is based in Wyoming, USA. However we work with manufacturers all around the globe and ship the goods directly for shorter delivery times.<\/p><p><\/p><p><\/p><p><\/p><p>Just browse our collections, where we have curated the most durable gear for every outdoorsman. Find your next gear that will become a reliable tool in your adventurous life. <\/p><p><\/p><p><\/p><p>Have fun shopping!<\/p><p><\/p><p><strong>From The Team at SkullVibe.com<\/strong><\/p>",
+            "text_style": "body"
+          }
+        },
+        "template--16037387010207__3997bac8-ebb8-4b9d-8be3-f94c4743a380-1674455511f4a30aca-2": {
+          "type": "button",
+          "settings": {
+            "button_label": "",
+            "button_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "template--16037387010207__3997bac8-ebb8-4b9d-8be3-f94c4743a380-1674455511f4a30aca-0",
+        "template--16037387010207__3997bac8-ebb8-4b9d-8be3-f94c4743a380-1674455511f4a30aca-1",
+        "template--16037387010207__3997bac8-ebb8-4b9d-8be3-f94c4743a380-1674455511f4a30aca-2"
+      ],
+      "settings": {
+        "image": "shopify:\/\/shop_images\/Rectangle_582.png",
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "image_first",
+        "desktop_content_alignment": "left",
+        "content_layout": "no-overlap",
+        "color_scheme": "background-1",
+        "mobile_content_alignment": "left",
+        "padding_top": 100,
+        "padding_bottom": 40
+      }
+    },
+    "a194781a-47ca-499e-96e0-6a4c619697d9": {
+      "type": "product-logo",
+      "blocks": {
+        "547f4375-9d31-4c79-8a38-1042d4ad5537": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Group_4875.png",
+            "description": "Top Rated Products"
+          }
+        },
+        "e84411dc-26dd-4a5d-9e2b-b18aeca6c176": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Group_4876.png",
+            "description": "Free Worldwide Shipping"
+          }
+        },
+        "47a4e622-3141-4808-99a7-2dc1015fe85f": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Group_4877.png",
+            "description": "Return Policy- 30days"
+          }
+        },
+        "8f8ed303-ab52-4ae0-bea8-0d3072fc718d": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Group_4878.png",
+            "description": "Support Our Veterans"
+          }
+        },
+        "4d027d27-886c-4419-b592-d4432576c181": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Group_4879.png",
+            "description": "SSL Secured Checkout"
+          }
+        }
+      },
+      "block_order": [
+        "547f4375-9d31-4c79-8a38-1042d4ad5537",
+        "e84411dc-26dd-4a5d-9e2b-b18aeca6c176",
+        "47a4e622-3141-4808-99a7-2dc1015fe85f",
+        "8f8ed303-ab52-4ae0-bea8-0d3072fc718d",
+        "4d027d27-886c-4419-b592-d4432576c181"
+      ],
+      "settings": {
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
+    "b6ca8241-9a6c-47d6-9b99-c35d341f429d": {
+      "type": "skullvibe-social",
+      "blocks": {
+        "fb667bff-613b-42fa-befe-0251822dc0bd": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Rectangle_469.png"
+          }
+        },
+        "b674155b-8431-4da7-8810-fe48931a977c": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Rectangle_467.png"
+          }
+        },
+        "2d9b6238-bd7b-4de0-a956-18b3abcdc36b": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Rectangle_468.png"
+          }
+        },
+        "4e166786-6556-422f-bbdd-58ef18f7903e": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Rectangle_466.png"
+          }
+        }
+      },
+      "block_order": [
+        "fb667bff-613b-42fa-befe-0251822dc0bd",
+        "b674155b-8431-4da7-8810-fe48931a977c",
+        "2d9b6238-bd7b-4de0-a956-18b3abcdc36b",
+        "4e166786-6556-422f-bbdd-58ef18f7903e"
+      ],
+      "settings": {
+        "heading": "@skullvibe",
+        "social-name": "Instagram",
+        "padding_top": 36,
+        "padding_bottom": 12,
+        "mob_padding_top": 36,
+        "mob_padding_bottom": 8
+      }
+    }
+  },
+  "order": [
+    "main",
+    "ba24945d-0db4-4f1a-b69f-a0003d69ce75",
+    "caeee745-37eb-496a-95da-a231bd7e0c79",
+    "4b8ec26c-74ba-4bd8-8237-4fbe0232c379",
+    "3997bac8-ebb8-4b9d-8be3-f94c4743a380",
+    "a194781a-47ca-499e-96e0-6a4c619697d9",
+    "b6ca8241-9a6c-47d6-9b99-c35d341f429d"
+  ]
+}
